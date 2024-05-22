@@ -16,7 +16,7 @@ body{
 }
 
  /* CSS for the header and navbar, with responsive design
- when the container gets lower than 500px the navbar will collapse into a burgermenu instead */
+ when the container gets lower than 745px the navbar will collapse into a burgermenu instead */
 
  .header {
     width: 100vw;
