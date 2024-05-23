@@ -249,3 +249,20 @@ p {
 	top: 0;
 }
 
+/*header with headline for the page*/
+
+.childCategory__header{
+    background-image: url(images/kids_green_backdrop.svg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    width: 100vw;
+    height: 450px;
+    display: grid;
+    place-items: center;
+    margin-top: -100px;
+    z-index: -1;
+  }
+  .childCategory__headline{
+    color: white;
+  }
+
