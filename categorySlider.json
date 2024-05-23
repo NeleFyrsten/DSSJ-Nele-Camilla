@@ -1,42 +1,43 @@
 [
+    
     {
         "id": "1",
-        "image": "images/category__alleKategorier.png",
-        "imageCredit": "Kim Toft Jørgensen"
+        "image": "images/category__information.jpeg",
+        "imageCredit": "qimono fra pixabay"
     }, 
     {
         "id": "2",
-        "image": "images/category__information.png",
+        "image": "images/category__historie.jpeg",
         "imageCredit": "Destination Sønderjylland"
-    }, 
+    },
     {
         "id": "3",
-        "image": "images/category__histore.png",
+        "image": "images/category__natur.jpeg",
         "imageCredit": "Destination Sønderjylland"
     },
     {
         "id": "4",
-        "image": "images/category__natur.png",
-        "imageCredit": "Destination Sønderjylland"
-    },
+        "image": "images/category__alleKategorier.jpeg",
+        "imageCredit": "Kim Toft Jørgensen"
+    }, 
     {
         "id": "5",
-        "image": "images/category__overnatning.png",
+        "image": "images/category__overnatning.jpeg",
         "imageCredit": "Destination Sønderjylland"
     },
     {
         "id": "6",
-        "image": "images/category__aktivSammen.png",
+        "image": "images/category__aktivSammen.jpeg",
         "imageCredit": "Destination Sønderjylland"
     },
     {
         "id": "7",
-        "image": "images/category__detSker.png",
+        "image": "images/category__detSker.jpeg",
         "imageCredit": "Destination Sønderjylland"
     },
     {
         "id": "8",
         "image": "images/category__madoplevelser.png",
-        "imageCredit": "Destination Sønderjylland"
+        "imageCredit": "Ivana Tomásková fra pixabay"
     }
 ]

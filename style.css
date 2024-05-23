@@ -6,6 +6,7 @@
 :root {
     /* colors fill */
     --mintgreen: #d0eae3;
+    /* gradients */
     --gradient__blue: linear-gradient(136deg, rgba(87, 235, 255, 100%) 0%, rgba(0, 119, 228, 100%) 100%);
     --gradient__orange: linear-gradient(180deg, rgba(249, 211, 10, 100%) 0%, rgba(237, 144, 5, 100%) 100%);
     --gradient__green: linear-gradient(136deg, rgba(178, 232, 90, 100%) 0%, rgba(107, 176, 47, 100%) 100%);
@@ -20,11 +21,6 @@
     --textKids__accent--yellow: #ef9906;
     --textKids__accent--pink: #fb9da4;
 
-    /* gradients */
-    --gradient__blue: linear-gradient(136deg, rgba(87, 235, 255, 100%) 0%, rgba(0, 119, 228, 100%) 100%);
-    --gradient__orange: linear-gradient(180deg, rgba(249, 211, 10, 100%) 0%, rgba(237, 144, 5, 100%) 100%);
-    --gradient__green: linear-gradient(136deg, rgba(178, 232, 90, 100%) 0%, rgba(107, 176, 47, 100%) 100%);
-
     --borderRadius__S: 8px;
     --borderRadius__M: 12px;
 
@@ -38,6 +34,8 @@
     --spacing__48: 48px;
     --spacing__92: 92px;
     --spacing__228: 228px;
+
+    --currentCard: 0;
 }
 
 body {
@@ -45,6 +43,15 @@ body {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: 0px;
+    /* Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 p {
@@ -187,6 +194,8 @@ h6 {
     overflow: hidden;
 }
 .heroSection__backgroundImage {
+    /* height: calc(100vh - 80px); */
+    display: block;
     width: 100%;
     z-index: -1;
 }
@@ -237,79 +246,96 @@ h6 {
 
 /* ------------ CategorySlider ------------ */
 .categorySlider {
-	width: 100%;
-    height: calc(683px + 40px); /* card--focus height + the pixels, the card needed to be pushed upwards (read card--focus)*/
-	display: flex;
+    display: flex;
     align-items: center;
-	color: var(--text__noFocus);
-	overflow-x: hidden;
-    position: absolute;
-    left: 0;
-    transform: translateX(-17%); /* SKAL FJERNES IGEN*/
-    margin-block-start: -800px;
-    padding-inline: 600px;
-}
-.categorySlider__card {
-    margin-inline: calc(var(--spacing__20) / 2);
-}
-.categorySlider__image {
-	border-radius: var(--borderRadius__M);
-	height: 397px;
-	width: 265px;
-	object-fit: cover; 
-	box-shadow: -4px 4px 10px 0px rgba(0,0,0,0.45);
-}
-.categorySlider__title {
-    margin-block-start: var(--spacing__12);
-    margin-block-end: var(--spacing__4);
-    margin-inline-start: var(--spacing__4);
-}
-.categorySlider__description {
-	display: none;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    margin-inline-start: var(--spacing__4);
-}
-
-.categorySlider__card--focus {
-	color: var(--text__secondary);
-    margin-inline: -50px; /* - margin, so it overlaps the other cards */
-    transform: translateY(40px); /* to get the image in the middle of the other images (different spacing, therefore is middle of the card NOT middle of the other cards and images */
-    z-index: 1;
-
-	& .categorySlider__image {
-		height: 536px;
-		width: 328px;
-		box-shadow: 0px 0px 27px 0px rgba(0,0,0,0.77)
-	}
-	& .categorySlider__title {
-		font-size: 2rem;
-	}
-    & .categorySlider__description {
-        display: block;
-        font-size: 1rem;
-        line-height: 1.25rem;
-    }
+    gap: 20px;
+    position: relative;
+    width: fit-content;
+    overflow: hidden;
+    translate: 0 -8%;
+    padding-left: 35px;
+    padding-bottom: 122px;
+    color: var(--text__noFocus);
+    background: linear-gradient(0deg, rgba(10, 66, 60, 1) 0%, rgba(10, 66, 60, 1) 92%, rgba(255, 255, 255, 0) 97%);
 }
 
 .slider__arrows {
     position: absolute;
-    left: 17%;
-    transform: translateY(-100%); /* SKAL FJERNES IGEN*/
     display: flex;
     justify-content: space-between;
+    padding: var(--spacing__20);
+    box-sizing: border-box;
     width: 100vw;
+    left: 0;
     z-index: 2;
+
+    .slider__arrow {
+        cursor: pointer;
+
+        &:hover {
+            /*without space between & and the rest = element contains both classes*/
+            fill: white;
+        }
+
+        &.slider__arrow--next {
+            transform: rotate(180deg);
+        }
+    }
 }
-.slider__arrow:hover {
-    fill: white;
-}
-.slider__arrow--previous {
-    margin-inline-start: var(--spacing__20);
-}
-.slider__arrow--next {
-    margin-inline-end: var(--spacing__20);
-    transform: rotate(180deg);
+
+.categorySlider__card {
+    position: relative;
+    translate: calc(((100vw / 5) - 10px) * -1 * (var(--currentCard) - 2));
+    transition: translate 0.3s;
+    width: calc((100vw / 5) - 30px);
+    height: 397px;
+
+    .categorySlider__image {
+        border-radius: var(--borderRadius__M);
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        box-shadow: -4px 4px 10px 0px rgba(0, 0, 0, 0.45);
+    }
+
+    .categorySlider__title {
+        margin-block-start: var(--spacing__12);
+        margin-block-end: var(--spacing__4);
+        margin-inline-start: var(--spacing__4);
+    }
+
+    .categorySlider__description {
+        display: none;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        margin-inline-start: var(--spacing__4);
+    }
+
+    &.focus {
+        color: var(--text__secondary);
+        margin-inline: -50px;
+        /* - margin, so it overlaps the other cards */
+        transform: translateY(40px);
+        /* to get the image in the middle of the other images (different spacing, therefore is middle of the card NOT middle of the other cards and images */
+        z-index: 1;
+
+        .categorySlider__image {
+            height: 536px;
+            width: 328px;
+            box-shadow: 0px 0px 27px 0px rgba(0, 0, 0, 0.77)
+        }
+
+        .categorySlider__title {
+            font-size: 2rem;
+        }
+
+        .categorySlider__description {
+            display: block;
+            font-size: 1rem;
+            line-height: 1.25rem;
+        }
+    }
 }
 .banner {
     width: 100%;
