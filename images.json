@@ -1,7 +1,17 @@
 [
     {
         "id": "1",
-        "image": "images/hero__background--home.png",
+        "image": "images/category__alleKategorier.png",
         "imageCredit": "Kim Toft Jørgensen"
+    }, 
+    {
+        "id": "2",
+        "image": "images/category__information.png",
+        "imageCredit": "Destination Sønderjylland"
+    }, 
+    {
+        "id": "3",
+        "image": "images/category__histore.png",
+        "imageCredit": "Destination Sønderjylland"
     }
 ]
