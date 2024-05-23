@@ -13,5 +13,30 @@
         "id": "3",
         "image": "images/category__histore.png",
         "imageCredit": "Destination Sønderjylland"
+    },
+    {
+        "id": "4",
+        "image": "images/category__natur.png",
+        "imageCredit": "Destination Sønderjylland"
+    },
+    {
+        "id": "5",
+        "image": "images/category__overnatning.png",
+        "imageCredit": "Destination Sønderjylland"
+    },
+    {
+        "id": "6",
+        "image": "images/category__aktivSammen.png",
+        "imageCredit": "Destination Sønderjylland"
+    },
+    {
+        "id": "7",
+        "image": "images/category__detSker.png",
+        "imageCredit": "Destination Sønderjylland"
+    },
+    {
+        "id": "8",
+        "image": "images/category__madoplevelser.png",
+        "imageCredit": "Destination Sønderjylland"
     }
 ]

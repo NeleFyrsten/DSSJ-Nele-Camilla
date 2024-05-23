@@ -178,6 +178,7 @@ h6 {
 .heroSection {
     width: 100vw;
 	position: relative;
+    overflow: hidden;
 }
 .heroSection__backgroundImage {
     width: 100%;
@@ -195,6 +196,7 @@ h6 {
     position: absolute;
     left: var(--spacing__48);
 	top: var(--spacing__32);
+
 }
 .socialMedia__line {
     width: 1px;
@@ -234,10 +236,12 @@ h6 {
 	display: flex;
     align-items: center;
 	color: var(--text__noFocus);
-	overflow-x: visible;
+	overflow-x: hidden;
     position: absolute;
+    left: 0;
     transform: translateX(-17%); /* SKAL FJERNES IGEN*/
     margin-block-start: -800px;
+    padding-inline: 600px;
 }
 .categorySlider__card {
     margin-inline: calc(var(--spacing__20) / 2);
@@ -284,11 +288,12 @@ h6 {
 
 .slider__arrows {
     position: absolute;
-    left: 0;
-    transform: translateY(-100%) translateX(17%); /* SKAL FJERNES IGEN*/
+    left: 17%;
+    transform: translateY(-100%); /* SKAL FJERNES IGEN*/
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 100vw;
+    z-index: 2;
 }
 .slider__arrow:hover {
     fill: white;
