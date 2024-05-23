@@ -43,7 +43,7 @@
                     <a href="#" class="menuLink">Information</a>
                 </li>
                 <li class="menuItem">
-                    <a href="#" class="menuLink ">Børneunivers</a>
+                    <a href="boerneunivers.html" class="menuLink ">Børneunivers</a>
                 </li>
             </ul>
         </nav>
@@ -70,6 +70,7 @@
     <!-- Hero Section -->
     <section class="heroSection heroSection--home">
         <img class="heroSection__backgroundImage" src="images/hero__background--home.png" alt="greenish picture of the sea with a sailboat on it">
+        <img class="heroSection__backgroundImage--mobile" src="images/hero__background--homeMobile.png" alt="">
         <section class="socialMedia">
             <span class="socialMedia__line"></span>
             <svg class="socialMedia__instagram icon icon__instagram" width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,52 +106,68 @@
             <p class="imageCredit">Foto: Kim Toft Jørgensen</p>
         </section>
         <section class="categorySlider">
-            <article class="categorySlider__card">
+            <section class="slider__arrows">
+                <svg class="slider__arrow slider__arrow--previous" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle opacity="0.64" cx="17.5" cy="17.5" r="16.5" transform="rotate(90 17.5 17.5)" stroke="white" stroke-width="2"/>
+                    <g opacity="0.7">
+                        <line x1="21.2247" y1="8.66145" x2="11.5695" y2="18.3166" stroke="white" stroke-width="2"/>
+                        <line y1="-1" x2="13.6545" y2="-1" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 20.5176 27.2646)" stroke="white" stroke-width="2"/>
+                    </g>
+                </svg>
+                <svg class="slider__arrow slider__arrow--next" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle opacity="0.64" cx="17.5" cy="17.5" r="16.5" transform="rotate(90 17.5 17.5)" stroke="white" stroke-width="2"/>
+                    <g opacity="0.7">
+                        <line x1="21.2247" y1="8.66145" x2="11.5695" y2="18.3166" stroke="white" stroke-width="2"/>
+                        <line y1="-1" x2="13.6545" y2="-1" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 20.5176 27.2646)" stroke="white" stroke-width="2"/>
+                    </g>
+                </svg>
+            </section>
+                <article class="categorySlider__card">
                 <img class="categorySlider__image" src="images/category__information.jpeg" alt="a questionmark on an island">
                 <p class="imageCredit">Foto: qimono fra pixabay</p>
-                <p class="categorySlider__title">Information</p>
+                <h6 class="categorySlider__title">Information</h6>
                 <p class="categorySlider__description">Se alle aktiviteter, begivenheder og oplevelser på EN side.</p>
             </article>
             <article class="categorySlider__card">
                 <img class="categorySlider__image" src="images/category__historie.jpeg" alt="a picture of Gråsten slot">
                 <p class="imageCredit">Foto: James Cripps</p>
-                <p class="categorySlider__title">Historie & Kultur</p>
+                <h6 class="categorySlider__title">Historie & Kultur</h6>
                 <p class="categorySlider__description">Udforsk områdets smukkeste kultursteder og lære om Danmarks historie.</p>
             </article>
             <article class="categorySlider__card">
                 <img class="categorySlider__image" src="images/category__natur.jpeg" alt="a picture of a forest at the water">
                 <p class="imageCredit">Foto: Destination Sønderjylland</p>
-                <p class="categorySlider__title">Natur</p>
+                <h6 class="categorySlider__title">Natur</h6>
                 <p class="categorySlider__description">Opdag de skønneste strande og oplev den dejlige natur i skoven eller på stier.</p>
             </article>
             <article class="categorySlider__card categorySlider__card--focus">
                 <img class="categorySlider__image" src="images/category__alleKategorier.jpeg" alt="a picture of Sønderborg with water and the alsik hotel">
                 <p class="imageCredit">Foto: Kim Toft Jørgensen</p>
-                <p class="categorySlider__title --focus">Alle kategorier</p>
-                <p class="categorySlider__description--focus">Få en god overblik over alle ting kan lave mens du er på ferie.</p>
+                <h6 class="categorySlider__title">Alle kategorier</h6>
+                <p class="categorySlider__description">Få en god overblik over alle ting kan lave mens du er på ferie.</p>
             </article>
             <article class="categorySlider__card">
                 <img class="categorySlider__image" src="images/category__overnatning.jpeg" alt="a picture of an old house at a small lake in the middle of nature">
                 <p class="imageCredit">Foto: Destination Sønderjylland</p>
-                <p class="categorySlider__title">Overnatning</p>
+                <h6 class="categorySlider__title">Overnatning</h6>
                 <p class="categorySlider__description">Fra hoteller til feriebolig og shelter - alt hvor du kan sove mens du er på ferie.</p>
             </article>
             <article class="categorySlider__card">
                 <img class="categorySlider__image" src="images/category__aktivSammen.jpeg" alt="a picture of family with bikes at the city harbour">
                 <p class="imageCredit">Foto: Destination Sønderjylland</p>
-                <p class="categorySlider__title">Aktiv Sammen</p>
+                <h6 class="categorySlider__title">Aktiv Sammen</h6>
                 <p class="categorySlider__description">Vil du have en aktiv ferie? Opdag sportaktiviteter, forlystelsesparker og mere.</p>
             </article>
             <article class="categorySlider__card">
                 <img class="categorySlider__image" src="images/category__detSker.jpeg" alt="a picture of a man while 'ringridning', dressed as in old times">
                 <p class="imageCredit">Foto: Destination Sønderjylland</p>
-                <p class="categorySlider__title">Det Sker</p>
+                <h6 class="categorySlider__title">Det Sker</h6>
                 <p class="categorySlider__description">Alle begivenheder i området i din ferieuge!</p>
             </article>
             <article class="categorySlider__card">
                 <img class="categorySlider__image" src="images/category__madoplevelser.png" alt="a picture of a pizza">
                 <p class="imageCredit">Foto: Ivana Tomásková fra pixabay</p>
-                <p class="categorySlider__title">Overnatning</p>
+                <h6 class="categorySlider__title">Overnatning</h6>
                 <p class="categorySlider__description">Fra hoteller til feriebolig og shelter - alt hvor du kan sove mens du er på ferie.</p>
             </article>
         </section>
@@ -273,7 +290,7 @@
                     <p class="imageCredit">Foto: Kim Toft Jørgensen</p>
                     <section class="productCard__firstLine">
                         <h6 class="productCard__title">Ringriderfest</h6>
-                        <svg class="productCard__wishlist icon icon__heart" fill="#000000" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                        <svg class="productCard__addToWishlist icon icon__heart" fill="#000000" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                             viewBox="0 0 471.701 471.701" xml:space="preserve">
                             <g>
                                 <path d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
@@ -304,7 +321,7 @@
                     <p class="imageCredit">Foto: Kim Toft Jørgensen</p>
                     <section class="productCard__firstLine">
                         <h6 class="productCard__title">Ringriderfest</h6>
-                        <svg class="productCard__wishlist icon icon__heart" fill="#000000" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                        <svg class="productCard__addToWishlist icon icon__heart" fill="#000000" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                             viewBox="0 0 471.701 471.701" xml:space="preserve">
                             <g>
                                 <path d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
@@ -335,7 +352,7 @@
                     <p class="imageCredit">Foto: Kim Toft Jørgensen</p>
                     <section class="productCard__firstLine">
                         <h6 class="productCard__title">Ringriderfest</h6>
-                        <svg class="productCard__wishlist icon icon__heart" fill="#000000" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                        <svg class="productCard__addToWishlist icon icon__heart" fill="#000000" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                             viewBox="0 0 471.701 471.701" xml:space="preserve">
                             <g>
                                 <path d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1

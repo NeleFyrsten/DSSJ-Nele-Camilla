@@ -17,11 +17,20 @@
     --textKids__accent--yellow: #ef9906;
     --textKids__accent--pink: #fb9da4;
 
+    /* gradients */
+    --gradient__blue: linear-gradient(136deg, rgba(87, 235, 255, 100%) 0%, rgba(0, 119, 228, 100%) 100%);
+    --gradient__orange: linear-gradient(180deg, rgba(249, 211, 10, 100%) 0%, rgba(237, 144, 5, 100%) 100%);
+    --gradient__green: linear-gradient(136deg, rgba(178, 232, 90, 100%) 0%, rgba(107, 176, 47, 100%) 100%);
+
     --borderRadius__S: 8px;
     --borderRadius__M: 12px;
 
     /* spacing */
+    --spacing__4: 4px;
+    --spacing__8: 8px;
+    --spacing__12: 12px;
     --spacing__16: 16px;
+    --spacing__20: 20px;
     --spacing__32: 32px;
     --spacing__48: 48px;
     --spacing__92: 92px;
@@ -39,6 +48,9 @@ p {
     line-height: 24px;
 }
 
+h6 {
+    font-size: 1.25rem;
+}
 /* CSS for the header and navbar, with responsive design
  when the container gets lower than 745px the navbar will collapse into a burgermenu instead */
 
@@ -111,6 +123,7 @@ p {
 .menuLink--active {
     text-decoration: underline;
     color: var(--text__accent--primary);
+    
 }
 .hamburger {
     display: none;
@@ -168,7 +181,10 @@ p {
 }
 .heroSection__backgroundImage {
     width: 100%;
-    z-index: -2;
+    z-index: -1;
+}
+.heroSection__backgroundImage--mobile {
+    display: none;
 }
 /* SoMe section */
 .socialMedia {
@@ -199,6 +215,7 @@ p {
     color: var(--text__secondary);
 }
 .heroSection__title {
+    background: var(--blue);
     font-size: 4.5rem;
     line-height: 5.5rem;
     font-weight: 800;
@@ -206,17 +223,24 @@ p {
 }
 .imageCredit {
     font-size: 8px;
+    line-height: 12px;
+    margin-inline-start: 4px
 }
 
 /* ------------ CategorySlider ------------ */
 .categorySlider {
 	width: 100%;
+    height: calc(683px + 40px); /* card--focus height + the pixels, the card needed to be pushed upwards (read card--focus)*/
 	display: flex;
-	gap: 20px;
+    align-items: center;
 	color: var(--text__noFocus);
-	overflow-x: scroll;
-	position: absolute;
-	bottom: 20%;
+	overflow-x: visible;
+    position: absolute;
+    transform: translateX(-17%); /* SKAL FJERNES IGEN*/
+    margin-block-start: -800px;
+}
+.categorySlider__card {
+    margin-inline: calc(var(--spacing__20) / 2);
 }
 .categorySlider__image {
 	border-radius: var(--borderRadius__M);
@@ -225,14 +249,25 @@ p {
 	object-fit: cover; 
 	box-shadow: -4px 4px 10px 0px rgba(0,0,0,0.45);
 }
+.categorySlider__title {
+    margin-block-start: var(--spacing__12);
+    margin-block-end: var(--spacing__4);
+    margin-inline-start: var(--spacing__4);
+}
 .categorySlider__description {
-	font-size: 0.75rem;
+	display: none;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    margin-inline-start: var(--spacing__4);
 }
 
 .categorySlider__card--focus {
 	color: var(--text__secondary);
+    margin-inline: -50px; /* - margin, so it overlaps the other cards */
+    transform: translateY(40px); /* to get the image in the middle of the other images (different spacing, therefore is middle of the card NOT middle of the other cards and images */
+    z-index: 1;
 
-	& .categorySlider__image {
+	& .categorySlider__image {
 		height: 536px;
 		width: 328px;
 		box-shadow: 0px 0px 27px 0px rgba(0,0,0,0.77)
@@ -240,17 +275,38 @@ p {
 	& .categorySlider__title {
 		font-size: 2rem;
 	}
+    & .categorySlider__description {
+        display: block;
+        font-size: 1rem;
+        line-height: 1.25rem;
+    }
 }
 
-.heroSection__background {
-	background-color: #06433C;
-	width: 100%;
-	height: 600px;
-	z-index: -1;
-	position: absolute;
-	top: 0;
+.slider__arrows {
+    position: absolute;
+    left: 0;
+    transform: translateY(-100%) translateX(17%); /* SKAL FJERNES IGEN*/
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.slider__arrow:hover {
+    fill: white;
+}
+.slider__arrow--previous {
+    margin-inline-start: var(--spacing__20);
+}
+.slider__arrow--next {
+    margin-inline-end: var(--spacing__20);
+    transform: rotate(180deg);
+}
+.banner {
+    width: 100%;
 }
 
+img {
+    width: 100%;
+}
 /*header with headline for the page*/
 
 .childCategory__header{
