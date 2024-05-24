@@ -35,7 +35,19 @@
     --spacing__92: 92px;
     --spacing__228: 228px;
 
-    --currentCard: 0;
+      /* calculation of the cardWidth, because it's used in two places
+    1. width of card itself, 2.translation (because card moves one place to the right
+    -20px for the gap, -8px, so that there are space for a glimpse of the two next cards*/
+    --cardWidth: calc(((100vw) / 5) - 20px - 8px);
+    --currentCard: 4;
+}
+
+.banner {
+    width: 100%;
+}
+
+img {
+    width: 100%;
 }
 
 body {
@@ -67,7 +79,9 @@ h3{
     font-size: 40px;
 }
 h4{
+    font-family: "Mr Dafoe", cursive;
     font-size: 36px;
+    color: var(--text__accent--primary);
 }
 h5{
     font-size: 2rem;
@@ -202,53 +216,72 @@ h6 {
 /* ---------- hero Section ------------- */
 .heroSection {
     width: 100vw;
-	position: relative;
+    position: relative;
     overflow: hidden;
 }
-.heroSection__backgroundImage {
-    /* height: calc(100vh - 80px); */
-    display: block;
-    width: 100%;
-    z-index: -1;
-}
-.heroSection__backgroundImage--mobile {
-    display: none;
-}
-/* SoMe section */
-.socialMedia {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing__32);
-    position: absolute;
-    left: var(--spacing__48);
-	top: var(--spacing__32);
 
-}
-.socialMedia__line {
-    width: 1px;
-    height: var(--spacing__228);
-    background-color: white;
-}
+.heroSection__main {
+    position: relative;
 
-/* text */
-.heroSection__text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    text-align: right;
-    max-width: 40vw;
-    position: absolute;
-    top: 10%;
-    right: var(--spacing__92);
-    color: var(--text__secondary);
-}
-.heroSection__title {
-    background: var(--blue);
-    font-size: 4.5rem;
-    line-height: 5.5rem;
-    font-weight: 800;
-    margin-bottom: 0;
+    .heroSection__backgroundImage {
+        display: block;
+        width: 100%;
+        z-index: -1;
+    }
+
+    .heroSection__backgroundImage--mobile {
+        display: none;
+    }
+
+    /* SoMe section */
+    .socialMedia {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5%;
+        padding: 3% 0 calc(3% + 50px) 0; /* 50px bottom, because slider is translated upwards with 50px,+3% "normal" padding*/
+        position: absolute;
+        top: 0;
+        left: 3vw;
+        height: 100%;
+        box-sizing: border-box;
+
+        .socialMedia__line {
+            flex: auto; /*fills rest of box, no fixed height*/
+            width: 1px;
+            background-color: white;
+        }
+
+        .icon {
+            height: 5%
+        }
+    }
+
+    /* text */
+    .heroSection__text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        bottom: calc(12% + 50px);
+        right: 4vw;
+        text-align: right;
+        color: var(--text__secondary);
+
+        .heroSection__title {
+            background: var(--blue);
+            font-size: 4.5rem;
+            line-height: 5.5rem;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .heroSection__description {
+            max-width: 40vw;
+
+        }
+    }
 }
 .imageCredit {
     font-size: 8px;
@@ -259,53 +292,86 @@ h6 {
 /* ------------ CategorySlider ------------ */
 .categorySlider {
     display: flex;
-    align-items: center;
     gap: 20px;
     position: relative;
     width: fit-content;
-    overflow: hidden;
-    translate: 0 -8%;
-    padding-left: 35px;
+    overflow: visible;
+    translate: 0 -50px; /*50px upwards, so it overlaps the image -> so it's fading into the slider backgorund*/
+    /*padding left to get the first card (information) in the middle of the screen*/
+    padding-left: calc(50vw - var(--cardWidth) / 2);
     padding-bottom: 122px;
     color: var(--text__noFocus);
-    background: linear-gradient(0deg, rgba(10, 66, 60, 1) 0%, rgba(10, 66, 60, 1) 92%, rgba(255, 255, 255, 0) 97%);
+    background: linear-gradient(0deg, #0a423c 0%, #0a423c calc(100% - 50px), #ffffff00 calc(100% - 20px));
 }
 
 .slider__arrows {
     position: absolute;
-    display: flex;
-    justify-content: space-between;
+    display: contents;
     padding: var(--spacing__20);
-    box-sizing: border-box;
-    width: 100vw;
-    left: 0;
-    z-index: 2;
 
     .slider__arrow {
+        position: absolute;
+        /*calculation of the middle of the imageheight (ratio:1/1.7 - look at categorySlider__image*/
+        top: calc(var(--cardWidth) * 1.7 / 2);
+        translate: 0 -50%;
         cursor: pointer;
+        z-index: 5;
 
         &:hover {
             /*without space between & and the rest = element contains both classes*/
             fill: white;
         }
 
+        &.slider__arrow--previous {
+            left: 20px;
+        }
+
         &.slider__arrow--next {
+            /*left, because its absolute to slider and slider begins at left:0
+            20px spacing and 35px is the iconwidth*/
+            left: calc(100vw - 20px - 35px);
             transform: rotate(180deg);
         }
     }
 }
-
 .categorySlider__card {
     position: relative;
-    translate: calc(((100vw / 5) - 10px) * -1 * (var(--currentCard) - 2));
-    transition: translate 0.3s;
-    width: calc((100vw / 5) - 30px);
-    height: 397px;
+    /*translate: card moves, when arrow or other card is clicked*/
+    translate: calc(var(--cardWidth) * -1 * (var(--currentCard) - 1) - 20px * (var(--currentCard) - 1));
+    transition: 0.3s;
+    width: var(--cardWidth);
+    height: fit-content;
+    cursor: pointer;
+    /*Disable Text Selection, when user doubleclicks on a card*/
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &.focus {
+        transform: scale(1.2);
+        z-index: 1;
+        color: var(--text__secondary);
+
+        .categorySlider__image {
+            box-shadow: 0px 0px 27px 0px rgba(0, 0, 0, 0.77)
+        }
+
+        .categorySlider__description {
+            display: block;
+        }
+    }
+
+    &:not(.focus):hover {
+        transform: scale(1.1);
+        z-index: 2;
+    }
 
     .categorySlider__image {
         border-radius: var(--borderRadius__M);
-        height: 100%;
+        height: fit-content;
         width: 100%;
+        /*aspect-ratio: width is defined, ratio is making sure the proportions are fixed*/
+        aspect-ratio: 1/1.7;
         object-fit: cover;
         object-position: center;
         box-shadow: -4px 4px 10px 0px rgba(0, 0, 0, 0.45);
@@ -323,39 +389,16 @@ h6 {
         line-height: 1rem;
         margin-inline-start: var(--spacing__4);
     }
-
-    &.focus {
-        color: var(--text__secondary);
-        margin-inline: -50px;
-        /* - margin, so it overlaps the other cards */
-        transform: translateY(40px);
-        /* to get the image in the middle of the other images (different spacing, therefore is middle of the card NOT middle of the other cards and images */
-        z-index: 1;
-
-        .categorySlider__image {
-            height: 536px;
-            width: 328px;
-            box-shadow: 0px 0px 27px 0px rgba(0, 0, 0, 0.77)
-        }
-
-        .categorySlider__title {
-            font-size: 2rem;
-        }
-
-        .categorySlider__description {
-            display: block;
-            font-size: 1rem;
-            line-height: 1.25rem;
-        }
-    }
 }
-.banner {
+/* home welcome */
+
+.welcome {
     width: 100%;
+    padding: 10%;
+    box-sizing: border-box;
 }
+.welcome__headline
 
-img {
-    width: 100%;
-}
 /*header with headline for the page*/
 
 .childCategory__header{

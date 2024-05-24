@@ -4,6 +4,10 @@
 // 3. focus class on the one in the middle
 // 4. change pagecontent (?)
 
+
+
+
+
 // get images
 function getImages() {
     fetch("categorySlider.json")
@@ -67,43 +71,36 @@ sliderCard.forEach(card => {
     card.addEventListener('click', moveSlider);
 })
 
-
-//imageID of the focus card in a variable -> we start with "all", which hast imageID=4
+//default cardInFocus: ALleKategorier
 let cardInFocus = 4;
-let cardCount = 0;
 
 //function: move the slider in the right direction and focus the right card
 function moveSlider(e) { //e = event the call comes from (either arrowPrev or arrowNext)
     const slider = document.querySelector('.categorySlider');
     console.log(e.target);
 
-    // stop the slider from moving too far, hiding the arrow in that direction
-    if (cardInFocus >= 8 || cardInFocus <= 1) {
-        e.currentTarget.style.opacity = "0";
-        return
-    }
 
     // if you click on a card instead of an arrow
     //currentTarget: where it came from in this script, not where i actually clicked on
-    if (e.currentTarget.classList.contains('categorySlider__card')) {
-        const cardID = e.currentTarget.getAttribute('imageID');
-        cardInFocus = cardID;
+    if (e.currentTarget.classList.contains("categorySlider__card")) {
+        const cardID = e.currentTarget.getAttribute("imageID");
+        cardInFocus = parseInt(cardID);
     }
-   
-    if (e.currentTarget === sliderArrowPrev) { 
-        cardInFocus -= 1;
-        cardCount += 200;
-        // changing the margin variable in css
-        document.documentElement.style.setProperty('--currentCard', cardCount + 'px');
+
+    if (e.currentTarget === sliderArrowPrev) {
+        if (cardInFocus > 1) { //if there are no cards to the right -> don't move
+            cardInFocus -= 1;
+        }
     }
 
     if (e.currentTarget === sliderArrowNext) {
-        cardInFocus += 1;
-        cardCount -= 200;
-        document.documentElement.style.setProperty('--currentCard', cardCount + 'px');
+        if (cardInFocus < sliderCard.length) {
+            cardInFocus += 1;
+        }
     }
-
-    console.log(cardCount);
+    
+    // change the variable in css to the cardInFocus, so all the calculations work :)
+    document.documentElement.style.setProperty("--currentCard", cardInFocus);
 
     // ----- changing focus card ------
     console.log(cardInFocus);
