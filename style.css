@@ -57,6 +57,18 @@ body::-webkit-scrollbar {
 p {
     line-height: 24px;
 }
+h1{
+    font-size: 72px;
+}
+h2{
+    font-size: 48px;
+}
+h3{
+    font-size: 40px;
+}
+h4{
+    font-size: 36px;
+}
 h5{
     font-size: 2rem;
     font-weight: bold;
@@ -480,6 +492,7 @@ img {
     font-size: 1.25rem;
     text-align: center;
     text-decoration: none;
+    color: var(--text__primary);
 }
 .ageButton:active{
     background: var(--gradient__orange);
@@ -539,3 +552,86 @@ img {
         width: 23px;
     }
  }
+ .kidsBanner{
+    height: 306px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-block:160px;
+    container-name: kidsBanner;
+    container-type: inline-size;
+    position: relative;
+    
+    & svg{
+        margin-block-end: -5px;
+    }
+}
+.kidsBanner__headline{
+    color: var(--text__secondary);
+    font-size: 1.7rem; /* SKAL ÆNDRES*/
+    padding-inline: var(--spacing__20);
+}
+.kidsBanner__highlight{
+    color: var(--textKids__accent--pink);
+}
+.kidsBanner__cloud{
+position: absolute;
+right: 0;
+top: -60%;
+z-index: -2;
+}
+.kidsBanner__background{
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
+}
+@container kidsBanner (max-width:975px){
+    .kidsBanner__headline{
+        font-size:1.2rem ;
+    }
+    .kidsBanner__cloud{
+        top:-45%;
+        & svg{
+        width: 200px;}
+    }
+}
+.kidsEventSlider{
+    display: flex;
+    place-self: center;
+    gap: var(--spacing__32);
+}
+.kidsEventSlider__card{
+    background-color: #FFE6BB;
+    width: 310px;
+    height: 382px;
+    border-radius: var(--borderRadius__S);
+}
+.kidsEventSlider__img{
+    object-fit: cover;
+    width: 310px;
+    height: 244px;
+    border-radius: var(--borderRadius__S) var(--borderRadius__S) 0 0;
+}
+/*Footer for the kids page*/
+.kidsFooter{
+    position: relative;
+    margin-block-start: var(--spacing__92);
+    height: 365px;
+}
+.kidsFooter__water{
+    position: absolute;
+    left: -5%;
+    top: -5%;
+}
+.kidsFooter__island{
+    position: absolute;
+    z-index: 1;
+    right: 30%;
+    top: -25%;
+    width: 850px;
+    transition: 0.5s ease;
+    
+}
+.kidsFooter__island:hover{
+    width: 1000px;
+}
