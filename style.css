@@ -37,8 +37,9 @@
 
       /* calculation of the cardWidth, because it's used in two places
     1. width of card itself, 2.translation (because card moves one place to the right
-    -20px for the gap, -8px, so that there are space for a glimpse of the two next cards*/
-    --cardWidth: calc(((100vw) / 5) - 20px - 8px);
+    -1vw for the gap, -8px, so that there are space for a glimpse of the two next cards*/
+    --cardWidth: calc(((100vw) / 5) - 1vw - 8px);
+    --cardWidthMobile: calc(((100vw) / 3) - 1vw - 8px);
     --currentCard: 4;
 }
 
@@ -67,16 +68,19 @@ body::-webkit-scrollbar {
 }
 
 p {
-    line-height: 24px;
+    line-height: 1.5rem;
 }
 h1{
-    font-size: 72px;
+    font-size: 4.5rem;
+    font-weight: 800rem;
+    line-height: 5.5rem;
 }
 h2{
-    font-size: 48px;
+    font-size: 3rem;
 }
 h3{
-    font-size: 40px;
+    font-size: 2.5rem;
+    line-height: 3rem;
 }
 h4{
     font-family: "Mr Dafoe", cursive;
@@ -218,19 +222,16 @@ h6 {
     width: 100vw;
     position: relative;
     overflow: hidden;
+    container-type: inline-size;
+    container-name: heroSection;
 }
 
 .heroSection__main {
     position: relative;
 
-    .heroSection__backgroundImage {
-        display: block;
+    .heroSection__backgroundImage .heroSection__backgroundImage--mobile {
         width: 100%;
         z-index: -1;
-    }
-
-    .heroSection__backgroundImage--mobile {
-        display: none;
     }
 
     /* SoMe section */
@@ -270,16 +271,7 @@ h6 {
         color: var(--text__secondary);
 
         .heroSection__title {
-            background: var(--blue);
-            font-size: 4.5rem;
-            line-height: 5.5rem;
-            font-weight: 800;
             margin: 0;
-        }
-
-        .heroSection__description {
-            max-width: 40vw;
-
         }
     }
 }
@@ -292,7 +284,7 @@ h6 {
 /* ------------ CategorySlider ------------ */
 .categorySlider {
     display: flex;
-    gap: 20px;
+    gap: 1vw;
     position: relative;
     width: fit-content;
     overflow: visible;
@@ -312,7 +304,6 @@ h6 {
     .slider__arrow {
         position: absolute;
         /*calculation of the middle of the imageheight (ratio:1/1.7 - look at categorySlider__image*/
-        top: calc(var(--cardWidth) * 1.7 / 2);
         translate: 0 -50%;
         cursor: pointer;
         z-index: 5;
@@ -337,7 +328,7 @@ h6 {
 .categorySlider__card {
     position: relative;
     /*translate: card moves, when arrow or other card is clicked*/
-    translate: calc(var(--cardWidth) * -1 * (var(--currentCard) - 1) - 20px * (var(--currentCard) - 1));
+    translate: calc(var(--cardWidth) * -1 * (var(--currentCard) - 1) - 1vw * (var(--currentCard) - 1));
     transition: 0.3s;
     width: var(--cardWidth);
     height: fit-content;
@@ -390,7 +381,95 @@ h6 {
         margin-inline-start: var(--spacing__4);
     }
 }
-/* home welcome */
+@container heroSection (min-width: 1250px) {
+    .heroSection__backgroundImage {
+        display: block;
+    }
+    .heroSection__backgroundImage--mobile {
+        display: none;
+    }
+    .heroSection__text {
+        max-width: 40vw;
+
+        .heroSection__title {
+            font-size: 4.5rem;
+            line-height: 5.5rem;
+        }
+        .heroSection__description--mobile {
+            display: none;
+        }
+    }
+    .slider__arrow {
+        top: calc(var(--cardWidth) * 1.7 / 2);
+    }
+}
+
+@container heroSection (max-width: 1250px) {
+    .heroSection__backgroundImage {
+        display: block;
+    }
+    .heroSection__backgroundImage--mobile {
+        display: none;
+    }
+    .heroSection__text {
+        max-width: 52vw;
+
+        .heroSection__title {
+            font-size: 3rem;
+            line-height: 3.5rem;
+        }
+        .heroSection__description--mobile {
+            display: none;
+        }
+    }
+    .slider__arrow {
+        top: calc(var(--cardWidth) * 1.7 / 2);
+    }
+}
+/* container mobile*/
+@container heroSection (max-width:745px) {
+    .heroSection__backgroundImage {
+        display: none;
+    }
+    .heroSection__backgroundImage--mobile {
+        display: block;
+    }
+    .heroSection__text {
+        max-width: 80vw;
+
+        .heroSection__title {
+            font-size: 2.25rem;
+            line-height: 3rem;
+        }
+        .heroSection__description {
+            display: none;
+        }
+        .heroSection__description--mobile {
+            display: block;
+            margin: 0;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.8);
+        }
+    }
+
+    .categorySlider {
+        padding-left: calc(50vw - var(--cardWidthMobile) / 2);
+        background: linear-gradient(0deg, #262525 0%, #262525 calc(100% - 50px), #ffffff00 calc(100% - 20px));
+
+    }
+    .categorySlider__card {
+        width: var(--cardWidthMobile);
+        translate: calc(var(--cardWidthMobile) * -1 * (var(--currentCard) - 1) - 1vw * (var(--currentCard) - 1));
+    
+        .categorySlider__title {
+            font-size: 1rem;
+        }
+    }
+    .slider__arrow {
+        top: calc(var(--cardWidthMobile) * 1.7 / 2);
+    }
+}
+
+/* ----------- home welcome ------------- */
 
 .welcome {
     width: 100%;
@@ -399,24 +478,8 @@ h6 {
 }
 .welcome__headline
 
-/*header with headline for the page*/
 
-.childCategory__header{
-    background-image: url(images/kids_green_backdrop.svg);
-    background-repeat: no-repeat;
-    background-size:cover;
-    width: 100vw;
-    height: 450px;
-    display: grid;
-    place-items: center;
-    margin-top: -100px;
-    z-index: -1;
-  }
-  .childCategory__headline{
-    color: white;
-  }
-
-/*header with headline for the kids category page*/
+/* -------- header with headline for the kids category page ----------*/
 
 .kidsCategory__header{
     background-image: url(images/kids_green_backdrop.svg);
