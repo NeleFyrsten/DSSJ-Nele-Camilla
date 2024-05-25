@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VisitSønderborg</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -31,7 +35,7 @@
                     <a href="index.html" class="menuLink menuLink--active">Hjem</a>
                 </li>
                 <li class="menuItem">
-                    <a href="aktivsammen.html" class="menuLink">Aktiv Sammen</a>
+                    <a href="html/aktivsammen.html" class="menuLink">Aktiv Sammen</a>
                 </li>
                 <li class="menuItem">
                     <a href="#" class="menuLink">Historie</a>
@@ -49,7 +53,7 @@
                     <a href="#" class="menuLink">Information</a>
                 </li>
                 <li class="menuItem">
-                    <a href="boerneunivers.html" class="menuLink ">Børneunivers</a>
+                    <a href="html/boerneunivers.html" class="menuLink ">Børneunivers</a>
                 </li>
             </ul>
         </nav>
@@ -267,8 +271,7 @@
         <section class="welcome">
             <section class="welcome__text">
                 <h2 class="welcome__headline">Velkommen</h2>
-                <!-- p?? h4??  -->
-                <p class="headline__script welcome__headline--script">til Sønderborg Kommune!</p>
+                <h4 class="headline__script welcome__headline--script">til Sønderborg Kommune!</h4>
                 <p class="welcome__description">Som gæst i Sønderborg Kommune kan du planlægge en meget alsidig ferie.
                     Du er omgivet af historie overalt på din vej, fra oldtidsminder og skibsfund til krigshistorie og
                     genforening. <br>Naturen er varieret og gratis at tage ud i. De smukke skove på Als og ved Gråsten
@@ -293,58 +296,46 @@
         <!-- opposite categories -->
         <section class="oppositeCards">
             <!-- left / first one -->
-            <section class="oppositeCards__left">
-                <section class="oppositeCards__imageAndCredit">
-                    <img class="oppositeCards__image oppositeCards__image--left" src="images/opposite__aktiviteter.png"
-                        alt="mother and daughter on a railbike">
+            <section class="oppositeCard oppositeCard--first">
+                <section>
+                    <img class="oppositeCard__image" src="images/opposite__aktiviteter.jpg"
+                    alt="mother and daughter on a railbike">
                     <p class="imageCredit">Foto: Destination Sønderjylland</p>
                 </section>
-                <section class="oppositeCards__info oppositeCards__info--left">
-                    <h3 class="oppositeCards__title oppositeCards__title--left">Opdag aktiviteter</h3>
-                    <p class="headline__script oppositeCards__subtitle--left">til hele familien</p>
-                    <p class="oppositeCards__description oppositeCards__description--left">Vil i gerne have en aktiv
+                <section class="oppositeCard__info">
+                    <p class="imageCredit mobile">Foto: Destination Sønderjylland</p>
+                    <h3 class="oppositeCard__title">Opdag aktiviteter</h3>
+                    <h4 class="headline__script">til hele familien</h4>
+                    <p class="oppositeCard__description">Vil i gerne have en aktiv
                         ferie? Der findes mange aktiviteter af forskellige retninger, såsom splrt, legepladser,
                         forlystelsesparker og cykelture.</p>
                     <a class="button button__primary" href="aktivsammen.html">Læs mere</a>
                 </section>
             </section>
             <!-- right / second one -->
-            <section class="oppositeCards__right">
-                <section class="oppositeCards__info oppositeCards__info--right">
-                    <h3 class="oppositeCards__title oppositeCards__title--right">Opdag den skønneste natur</h3>
-                    <p class="headline__script oppositeCards__subtitle--right">skov, strande, stier</p>
-                    <p class="oppositeCards__description oppositeCards__description--right">Uanset om du er til den
+            <section class="oppositeCard oppositeCard--right">
+                <section class="oppositeCard__info">
+                    <p class="imageCredit imageCredit--oppositeMobile">Foto: Kim Toft Jørgensen</p>
+                    <h3 class="oppositeCard__title">Opdag den skønneste natur</h3>
+                    <h4 class="headline__script">skov, strande, stier</h4>
+                    <p class="oppositeCard__description">Uanset om du er til den
                         stille naturtur med kamera og kikkert eller der skal være fart over feltet med et Go-Pro på
                         hjelmen, så er Sønderborg området og ferieøen Als et godt udgangspunkt for at tage ud og opdage
                         naturen.</p>
                     <a class="button button__primary" href="">Læs mere</a>
                 </section>
-                <section class="oppositeCards__imageAndCredit">
-                    <img class="oppositeCards__image oppositeCards__image--right" src="images/opposite__natur.jpeg"
+                <section class="oppositeCard__imageAndCredit">
+                    <img class="oppositeCard__image" src="images/opposite__natur.jpeg"
                         alt="a picture of a forest next to the beach in bright sunlight">
                     <p class="imageCredit">Foto: Kim Toft Jørgensen</p>
                 </section>
             </section>
         </section>
         <!-- feature circles -->
-        <section class="features">
-            <article class="features__item">
-                <img class="features__icon" src="images/feature__kalender.png" alt="a calendar icon in a blue circle">
-                <p class="features__description">Se alt der sker når du er på ferie</p>
-            </article>
-            <article class="features__item">
-                <img class="features__icon" src="images/feature__kort.png" alt="a map icon in a blue circle">
-                <p class="features__description">Tjek hvilke oplevelser der er tæt på dig</p>
-            </article>
-            <article class="features__item">
-                <img class="features__icon" src="images/feature__huskeliste.png" alt="a heart icon in a blue circle">
-                <p class="features__description">Tilføj dine favoriter til huskelisten</p>
-            </article>
-            <section class="features__imageAndCredit">
-                <img class="features__image" src="images/features__image.png" alt="">
-                <p class="imageCredit">Foto: designed by freepik</p>
-            </section>
-        </section>
+        
+        <img class="features" src="images/home__features.png" alt="">
+        <img class="features--mobile" src="images/home__features--mobile.jpg" alt="">
+       
         <!-- imageSlider -->
         <section class="imageSlider">
             <section class="imageSlider__info">
@@ -558,8 +549,8 @@
             </section>
         </section>
     </footer>
-    <script src="headerScript.js"></script>
-    <script src="slider.js"></script>
+    <script src="js/headerScript.js"></script>
+    <script src="js/slider.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,268 @@
+@import url(root.css);
+
+.imageCredit {
+    font-size: 8px;
+    line-height: 12px;
+    margin-inline-start: 4px
+}
+
+.kidsCategory__header{
+    background-image: url(../images/kids_green_backdrop.svg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    width: 100vw;
+    height: 450px;
+    display: grid;
+    place-items: center;
+    margin-block-start: -100px;
+    z-index: -1;
+  }
+  .kidsCategory__headline{
+    color: white;
+  }
+
+/* kids category page overall styling*/
+
+.kidsCategory__body{
+    display: grid;
+}
+
+/*Kids slider*/
+.kidsSlider{
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing__16);
+    container-name: kidsSlider;
+    container-type: inline-size;
+}
+
+.addToWishlist{
+    display: none;
+    position: absolute;
+    bottom: var(--spacing__8);
+    right: var(--spacing__8);
+}
+.kidsSlider__card{
+    background: var(--gradient__orange);
+    width: 228px;
+    height: 320px;
+    color: white;
+    border-radius: var(--borderRadius__S);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    & .imageCredit{
+        margin-block-start: var(--spacing__8);
+        margin-inline: var(--spacing__8);
+        margin-block-end: 0;
+    }
+}
+.kidsSlider__card--focus{
+    width: 270px;
+    height: 350px;
+
+    & .kidsSlider__image{
+        width: 270px;
+    }
+    & .addToWishlist{
+        display: block;
+    }
+}
+.kidsSlider :nth-of-type(3n){  /* Every 3rd card gets the blue gradient background */
+    background: var(--gradient__blue);
+}
+.kidsSlider :nth-of-type(3n+1){ /* Every card after ever 3rd card gets the background color orange */
+    background: var(--gradient__green);
+}
+.kidsSlider :nth-of-type(n) > *{ /* there was an issue with this method where the above affects the non direct children, so this is to exclude them*/
+    background: none;
+}
+.kidsSlider__location{
+    flex-grow: 1;
+    position: absolute;
+    bottom: var(--spacing__8);
+    left: var(--spacing__8);
+    margin: 0;
+}
+.kidsSlider__title{
+    margin-block-start: var(--spacing__20);
+    margin-block-end: 0;
+    margin-inline: var(--spacing__8);
+}
+.kidsSlider__image{
+    object-fit: cover;
+    width: 228px;
+    height: 178px;
+    border-radius: var(--borderRadius__S) var(--borderRadius__S) 0 0;
+}
+
+.kidsSlider__headline{
+    place-self: center;
+    margin-block-end: var(--spacing__32);
+    margin-block-start: 0;
+}
+.kidsSlider__subHeadline{
+    place-self: center;
+    margin-block: 0 var(--spacing__20);
+}
+.ageButtons{
+    place-self: center;
+    margin-block: 0 var(--spacing__20);
+    display: flex;
+    gap: var(--spacing__12);
+}
+.ageButton{
+    display: block;
+    border: solid 2px orange;
+    border-radius: var(--borderRadius__S);
+    background-color: white;
+    width: 80px;
+    font-size: 1.25rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text__primary);
+}
+.ageButton:active{
+    background: var(--gradient__orange);
+    color: white;
+}
+.indicators{
+    width: 192px;
+    display: flex;
+    gap: var(--spacing__8);
+    place-self: center;
+    margin-block: var(--spacing__16);
+}
+.indicator{
+    width: 32px;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.244);
+}
+.indicator--focus{
+    background: rgba(0, 0, 0, 0.674);
+}
+
+/* container query for the kids slider*/
+@container kidsSlider (max-width:980px){
+    .kidsSlider__card{
+     width: 153px;
+     height: 206px;
+    }
+    .kidsSlider__image{
+        width: 153px;
+        height: 120px;
+    }
+    .kidsSlider__title{
+        font-size: 1rem;
+        margin-block-start: 4px;
+    }
+    .kidsSlider__location{
+        font-size: 0.75rem;
+        bottom: 4px;
+        left: 4px;
+
+        & svg{
+            width: 10px;
+            margin-block-end: -4px;
+            margin-inline-start: 2px;
+        }
+    }
+    .kidsSlider__card--focus{
+        width: 170px;
+        height: 228px;
+
+        & .kidsSlider__image{
+            height: 145px;
+            width: 170px;
+        }
+    }
+    .addToWishlist{
+        width: 23px;
+    }
+ }
+ .kidsBanner{
+    height: 306px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-block:160px;
+    container-name: kidsBanner;
+    container-type: inline-size;
+    position: relative;
+    
+    & svg{
+        margin-block-end: -5px;
+    }
+}
+.kidsBanner__headline{
+    color: var(--text__secondary);
+    font-size: 1.7rem; /* SKAL ÆNDRES*/
+    padding-inline: var(--spacing__20);
+}
+.kidsBanner__highlight{
+    color: var(--textKids__accent--pink);
+}
+.kidsBanner__cloud{
+position: absolute;
+right: 0;
+top: -60%;
+z-index: -2;
+}
+.kidsBanner__background{
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
+}
+@container kidsBanner (max-width:975px){
+    .kidsBanner__headline{
+        font-size:1.2rem ;
+    }
+    .kidsBanner__cloud{
+        top:-45%;
+        & svg{
+        width: 200px;}
+    }
+}
+.kidsEventSlider{
+    display: flex;
+    place-self: center;
+    gap: var(--spacing__32);
+}
+.kidsEventSlider__card{
+    background-color: #FFE6BB;
+    width: 310px;
+    height: 382px;
+    border-radius: var(--borderRadius__S);
+}
+.kidsEventSlider__img{
+    object-fit: cover;
+    width: 310px;
+    height: 244px;
+    border-radius: var(--borderRadius__S) var(--borderRadius__S) 0 0;
+}
+/*Footer for the kids page*/
+.kidsFooter{
+    position: relative;
+    margin-block-start: var(--spacing__92);
+    height: 365px;
+}
+.kidsFooter__water{
+    position: absolute;
+    left: -5%;
+    top: -5%;
+}
+.kidsFooter__island{
+    position: absolute;
+    z-index: 1;
+    right: 30%;
+    top: -25%;
+    width: 850px;
+    transition: 0.5s ease;
+    
+}
+.kidsFooter__island:hover{
+    width: 1000px;
+}

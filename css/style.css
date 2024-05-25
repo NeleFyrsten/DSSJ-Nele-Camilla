@@ -1,0 +1,444 @@
+@import url("constants.css");
+
+/*next 4 just temporary, they were too big, but aren't styled yet*/
+.banner {
+    width: 100%;
+}
+img {
+    width: 100%;
+}
+.icon {
+    width: 35px;
+}
+.accessibilityTag{
+    width: 35px;
+}
+
+.imageCredit {
+    font-size: 8px;
+    line-height: 12px;
+    margin-inline-start: var(--spacing__4);
+}
+
+/* ___________________________________________
+                 HERO SECTION
+   ___________________________________________ */
+
+.heroSection {
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    container-type: inline-size;
+    container-name: heroSection;
+}
+
+.heroSection__main {
+    position: relative;
+
+    .heroSection__backgroundImage .heroSection__backgroundImage--mobile {
+        width: 100%;
+        z-index: -1;
+    }
+    
+    /* text */
+    .heroSection__text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        bottom: calc(12% + 50px);
+        right: 4vw;
+        text-align: right;
+        color: var(--text__secondary);
+
+        animation-name: heroTextFlyIn;
+        animation-duration: 2s;
+       
+        .heroSection__title {
+            margin: 0;
+        }
+    }
+}
+
+@keyframes heroTextFlyIn {
+    from { 
+        right: -100%; 
+    }
+    to {
+        right: 4vw;
+    }
+}
+
+/* SoMe section */
+
+.socialMedia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+    padding: 3% 0 calc(3% + 50px) 0; /* 50px bottom, because slider is translated upwards with 50px,+3% "normal" padding*/
+    position: absolute;
+    top: 0;
+    left: 3vw;
+    height: 100%;
+    box-sizing: border-box;
+
+    animation-name: socialMediaFlyIn;
+    animation-duration: 1s;
+
+    .socialMedia__line {
+        flex: auto; /*fills rest of box, no fixed height*/
+        width: 1px;
+        background-color: white;
+    }
+
+    .icon {
+        height: 5%
+    }
+}
+
+@keyframes socialMediaFlyIn {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.socialMedia--mobile {
+    background-color: #262525;
+    display: none;
+    padding: var(--spacing__24);
+    margin: 0;
+    translate:0 -20px; /*because the slider also has translate 50px*/
+
+    animation-name: categorySliderFlyIn;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+
+    .socialMedia__line {
+        flex: auto;
+        height: 1px;
+        background-color: white;
+    }
+}
+
+
+/* ______________________________________
+               CATEGORY SLIDER 
+   ______________________________________ */
+
+.categorySlider {
+    display: flex;
+    gap: 1vw;
+    position: relative;
+    width: fit-content;
+    overflow: visible;
+    transform: 0 -50px; /*50px upwards, so it overlaps the image -> so it's fading into the slider backgorund*/
+    /*padding left to get the first card (information) in the middle of the screen*/
+    padding-left: calc(50vw - var(--cardWidth) / 2);
+    padding-bottom: var(--spacing__128);
+    color: var(--text__noFocus);
+    background: linear-gradient(0deg, #0a423c 0%, #0a423c calc(100% - 50px), #ffffff00 calc(100% - 20px));
+
+    animation-name: categorySliderFlyIn;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes categorySliderFlyIn {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(-50px);
+        opacity: 1;
+    }
+}
+
+.slider__arrows {
+    position: absolute;
+    display: contents;
+    padding: var(--spacing__20);
+
+    .slider__arrow {
+        position: absolute;
+        /*calculation of the middle of the imageheight (ratio:1/1.7 - look at categorySlider__image*/
+        translate: 0 -50%;
+        cursor: pointer;
+        z-index: 5;
+
+        &:hover {
+            /*without space between & and the rest = element contains both classes*/
+            fill: white;
+        }
+
+        &.slider__arrow--previous {
+            left: 20px;
+        }
+
+        &.slider__arrow--next {
+            /*left, because its absolute to slider and slider begins at left:0
+            20px spacing and 35px is the iconwidth*/
+            left: calc(100vw - 20px - 35px);
+            transform: rotate(180deg);
+        }
+    }
+}
+.categorySlider__card {
+    position: relative;
+    /*translate: card moves, when arrow or other card is clicked*/
+    translate: calc(var(--cardWidth) * -1 * (var(--currentCard) - 1) - 1vw * (var(--currentCard) - 1));
+    transition: 0.3s;
+    width: var(--cardWidth);
+    height: fit-content;
+    cursor: pointer;
+    /*Disable Text Selection, when user doubleclicks on a card*/
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &.focus {
+        transform: scale(1.2);
+        z-index: 1;
+        color: var(--text__secondary);
+
+        .categorySlider__image {
+            box-shadow: 0px 0px 27px 0px rgba(0, 0, 0, 0.77)
+        }
+
+        .categorySlider__description {
+            display: block;
+        }
+    }
+
+    &:not(.focus):hover {
+        transform: scale(1.1);
+        z-index: 2;
+    }
+
+    .categorySlider__image {
+        border-radius: var(--borderRadius__M);
+        height: fit-content;
+        width: 100%;
+        /*aspect-ratio: width is defined, ratio is making sure the proportions are fixed*/
+        aspect-ratio: 1/1.7;
+        object-fit: cover;
+        object-position: center;
+        box-shadow: -4px 4px 10px 0px rgba(0, 0, 0, 0.45);
+    }
+
+    .categorySlider__title {
+        margin-block-start: var(--spacing__12);
+        margin-block-end: var(--spacing__4);
+        margin-inline-start: var(--spacing__4);
+    }
+
+    .categorySlider__description {
+        display: none;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        margin-inline-start: var(--spacing__4);
+    }
+}
+
+/* ------------- container queries for different screen sizes -------------*/
+
+@container heroSection (min-width: 1250px) {
+    .heroSection__backgroundImage {
+        display: block;
+    }
+    .heroSection__backgroundImage--mobile {
+        display: none;
+    }
+    .heroSection__text {
+        max-width: 40vw;
+
+        .heroSection__title {
+            font-size: 4.5rem;
+            line-height: 5.5rem;
+        }
+        .heroSection__description--mobile {
+            display: none;
+        }
+    }
+    .slider__arrow {
+        top: calc(var(--cardWidth) * 1.7 / 2);
+    }
+}
+
+@container heroSection (max-width: 1250px) {
+    .heroSection__backgroundImage {
+        display: block;
+    }
+    .heroSection__backgroundImage--mobile {
+        display: none;
+    }
+    .heroSection__text {
+        max-width: 52vw;
+
+        .heroSection__title {
+            font-size: 3rem;
+            line-height: 3.5rem;
+        }
+        .heroSection__description--mobile {
+            display: none;
+        }
+    }
+    .slider__arrow {
+        top: calc(var(--cardWidth) * 1.7 / 2);
+    }
+}
+/* container mobile*/
+@container heroSection (max-width:800px) {
+    .heroSection__backgroundImage {
+        display: none;
+    }
+    .heroSection__backgroundImage--mobile {
+        display: block;
+        width: 150%;
+        transform: translateX(-25%);
+    }
+    .heroSection__text {
+        max-width: 80vw;
+
+        .heroSection__title {
+            font-size: 2.25rem;
+            line-height: 3rem;
+        }
+        .heroSection__description {
+            display: none;
+        }
+        .heroSection__description--mobile {
+            display: block;
+            margin: 0;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.8);
+        }
+    }
+
+    .categorySlider {
+        padding-left: calc(50vw - var(--cardWidthMobile) / 2);
+        background: linear-gradient(0deg, #262525 0%, #262525 calc(100% - 50px), #ffffff00 calc(100% - 20px));
+    
+    }
+    .categorySlider__card {
+        width: var(--cardWidthMobile);
+        translate: calc(var(--cardWidthMobile) * -1 * (var(--currentCard) - 1) - 1vw * (var(--currentCard) - 1));
+        text-align: center;
+
+        .categorySlider__title {
+            display: none;
+        }
+        .categorySlider__description {
+            /* didn't look good in normal size, therfore adjusted it so it has more space*/
+            width: 200%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        &.focus {
+            .categorySlider__title {
+                display: block;
+                font-size: 1rem;
+            }
+        }
+    }
+    .slider__arrow {
+        top: calc(var(--cardWidthMobile) * 1.7 / 2);
+    }
+}
+ /* for the soMe section */
+@media screen and (max-width: 800px) {
+    .socialMedia {
+        display: none;
+    }
+    .socialMedia--mobile {
+        display: flex;
+        gap: 5%;
+        align-items: center;
+    }
+}
+
+/*__________________________________________________
+        HOME WELCOME (from here: mobile first)
+  __________________________________________________*/
+
+.welcome {
+    width: 100%;
+    padding-inline: 10%;
+    padding-block-end: var(--spacing__20);
+    box-sizing: border-box;
+    
+    .welcome__headline, .welcome__headline--script {
+        margin: 0;
+    }
+    
+    .welcomeImage--top, .welcomeImage--bottom {
+        display: none;
+    }
+}
+
+
+
+/*_______________________________________
+            OPPOSITE CARDS
+  _______________________________________*/
+
+.oppositeCards {
+    margin-block: var(--spacing__24);
+    
+}
+.oppositeCard {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-block-end: 250px;
+    
+    .oppositeCard__image {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;   
+    }
+    
+    .oppositeCard__info {
+        width: 90vw;
+        position: absolute;
+        top: 80%;
+        background-color: white;
+        padding-inline: var(--spacing__24);
+        padding-block-start: var(--spacing__8);
+        padding-block-end: var(--spacing__4); /* because <p> has a margin of 1em (16px), 24 - 16 = 8*/
+        box-sizing: border-box;
+        border-radius: var(--borderRadius__M);
+        box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
+
+        .oppositeCard__title {
+            margin: 0;
+        }
+    }
+
+    .button__primary {
+        display: none;
+    }
+}
+
+.features {
+    display: none;
+}
+
+.features--mobile {
+    display: block;
+    width: 90vw;
+    transform: translateX(3vw);
+    margin-block: var(--spacing__48);
+}
+
+
+

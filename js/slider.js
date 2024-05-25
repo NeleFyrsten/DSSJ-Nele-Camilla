@@ -10,7 +10,7 @@
 
 // get images
 function getImages() {
-    fetch("categorySlider.json")
+    fetch("js/categorySlider.json")
     .then((response) => {
         if (!response.ok) {
             throw new Error(`HTTP Error! Status: ${response.status}`);
