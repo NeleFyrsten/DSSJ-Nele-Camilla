@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1438 1005">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ffea79;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #35b0e6;
+      }
+
+      .cls-3 {
+        fill: #cae8f7;
+      }
+
+      .cls-4 {
+        fill: #2091b6;
+      }
+
+      .cls-5 {
+        fill: #fffba1;
+      }
+
+      .cls-6 {
+        fill: #fff;
+      }
+
+      .cls-7 {
+        fill: #71ccf4;
+      }
+
+      .cls-8 {
+        fill: #ffd25f;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2" data-name="Layer 2">
+    <rect class="cls-2" x="-1.6" y="-.1" width="1440" height="502"/>
+    <rect class="cls-7" x="333.5" y="124.3" width="244.3" height="47.2"/>
+    <ellipse class="cls-7" cx="576.1" cy="123.6" rx="48.2" ry="47.9"/>
+    <ellipse class="cls-7" cx="483.4" cy="88.4" rx="64.3" ry="58.5"/>
+    <ellipse class="cls-7" cx="340" cy="136" rx="38.7" ry="35.6"/>
+    <ellipse class="cls-7" cx="394.8" cy="117.8" rx="38.7" ry="35.9"/>
+    <rect class="cls-7" x="775.9" y="437" width="194.4" height="37.6"/>
+    <ellipse class="cls-7" cx="969" cy="436.5" rx="38.4" ry="38.1"/>
+    <ellipse class="cls-7" cx="895.2" cy="408.4" rx="51.2" ry="46.6"/>
+    <ellipse class="cls-7" cx="781.1" cy="446.3" rx="30.8" ry="28.3"/>
+    <ellipse class="cls-7" cx="824.7" cy="431.9" rx="30.8" ry="28.6"/>
+    <rect class="cls-7" x="-85.1" y="237" width="194.4" height="37.6"/>
+    <ellipse class="cls-7" cx="108" cy="236.5" rx="38.4" ry="38.1"/>
+    <ellipse class="cls-7" cx="34.2" cy="208.4" rx="51.2" ry="46.6"/>
+    <rect class="cls-7" x="1320.1" y="154.6" width="149.8" height="28.9"/>
+    <ellipse class="cls-7" cx="1411.9" cy="132.6" rx="39.4" ry="35.9"/>
+    <ellipse class="cls-7" cx="1324.1" cy="161.7" rx="23.7" ry="21.8"/>
+    <ellipse class="cls-7" cx="1357.6" cy="150.6" rx="23.7" ry="22"/>
+  </g>
+  <g id="Layer_1" data-name="Layer 1">
+    <rect class="cls-4" x=".4" y="502.9" width="1440" height="502"/>
+    <ellipse class="cls-5" cx="719.9" cy="172.9" rx="160.5" ry="162"/>
+    <ellipse class="cls-1" cx="719.9" cy="172.4" rx="122.5" ry="123.5"/>
+    <circle class="cls-8" cx="719.9" cy="172.4" r="79.5"/>
+    <rect class="cls-6" x=".4" y="408.9" width="486" height="94"/>
+    <ellipse class="cls-6" cx="64.9" cy="360.4" rx="96.5" ry="95.5"/>
+    <ellipse class="cls-6" cx="244.9" cy="338.9" rx="128.5" ry="117"/>
+    <ellipse class="cls-6" cx="472.4" cy="431.9" rx="77" ry="71"/>
+    <ellipse class="cls-6" cx="363.4" cy="395.9" rx="77" ry="71"/>
+    <rect class="cls-6" x="971.4" y="408.9" width="486" height="94"/>
+    <ellipse class="cls-6" cx="1392.9" cy="360.4" rx="96.5" ry="95.5"/>
+    <ellipse class="cls-6" cx="1212.9" cy="338.9" rx="128.5" ry="117"/>
+    <ellipse class="cls-6" cx="985.4" cy="431.9" rx="77" ry="71"/>
+    <ellipse class="cls-6" cx="1081.4" cy="366.9" rx="77" ry="71"/>
+    <rect class="cls-3" x="1085.4" y="433.9" width="357" height="69"/>
+    <ellipse class="cls-3" cx="1087.9" cy="432.9" rx="70.5" ry="70"/>
+    <ellipse class="cls-3" cx="1223.4" cy="381.4" rx="94" ry="85.5"/>
+    <ellipse class="cls-3" cx="1432.9" cy="450.9" rx="56.5" ry="52"/>
+    <ellipse class="cls-3" cx="1352.9" cy="424.4" rx="56.5" ry="52.5"/>
+    <rect class="cls-3" x="-5.6" y="432.9" width="357" height="69"/>
+    <ellipse class="cls-3" cx="348.9" cy="431.9" rx="70.5" ry="70"/>
+    <ellipse class="cls-3" cx="213.4" cy="380.4" rx="94" ry="85.5"/>
+    <ellipse class="cls-3" cx="3.9" cy="449.9" rx="56.5" ry="52"/>
+    <ellipse class="cls-3" cx="83.9" cy="423.4" rx="56.5" ry="52.5"/>
+    <rect class="cls-6" x="1281.3" y="512.9" width="169" height="32.7"/>
+    <ellipse class="cls-6" cx="1427.8" cy="496" rx="33.6" ry="33.2"/>
+    <ellipse class="cls-6" cx="1365.2" cy="488.6" rx="44.7" ry="40.7"/>
+    <ellipse class="cls-6" cx="1286.2" cy="520.9" rx="26.8" ry="24.7"/>
+    <ellipse class="cls-6" cx="1319.5" cy="498.3" rx="26.8" ry="24.7"/>
+    <rect class="cls-6" x="-19.5" y="544.9" width="169" height="32.7"/>
+    <ellipse class="cls-6" cx="2.9" cy="528" rx="33.6" ry="33.2"/>
+    <ellipse class="cls-6" cx="65.5" cy="520.6" rx="44.7" ry="40.7"/>
+    <ellipse class="cls-6" cx="144.6" cy="552.9" rx="26.8" ry="24.7"/>
+    <ellipse class="cls-6" cx="111.2" cy="530.3" rx="26.8" ry="24.7"/>
+  </g>
+</svg>

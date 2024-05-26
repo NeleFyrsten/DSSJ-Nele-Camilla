@@ -266,3 +266,26 @@ z-index: -2;
 .kidsFooter__island:hover{
     width: 1000px;
 }
+.kidsFooter__someIcons{
+    position: absolute;
+    bottom: 5%;
+    z-index: 2;
+    width: 100vw;
+    display: flex;
+    gap: var(--spacing__48);
+    justify-content: center;
+    align-items: center;
+
+    & p {
+        color: var(--text__secondary);
+        border-top: solid 1px white;
+        width: 400px;
+    }
+
+}
+.kidsFooter__instagram{
+    margin-inline-start: var(--spacing__92);
+}
+.kidsFooter__tiktok{
+    margin-inline-end: var(--spacing__92);
+}
