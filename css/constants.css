@@ -4,6 +4,11 @@
 :root {
     /* colors fill */
     --mintgreen: #d0eae3;
+    --lightBlue: #BDD4ED;
+    --lilacGrey: #BFBDD1;
+    --accent__blue: #17156a;
+    --grey: #C7C7C7;
+
     /* gradients */
     --gradient__blue: linear-gradient(136deg, rgba(87, 235, 255, 100%) 0%, rgba(0, 119, 228, 100%) 100%);
     --gradient__orange: linear-gradient(180deg, rgba(249, 211, 10, 100%) 0%, rgba(237, 144, 5, 100%) 100%);
@@ -94,7 +99,8 @@ h5{
     font-weight: bold;
 }
 h6 {
-    font-size: 1.25rem;
+    font-size: 1rem;
+    font-weight: normal;
 }
 
 /*font sizes desktop*/

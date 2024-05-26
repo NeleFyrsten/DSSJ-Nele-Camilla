@@ -1,9 +1,7 @@
 @import url("constants.css");
 
 /*next 4 just temporary, they were too big, but aren't styled yet*/
-.banner {
-    width: 100%;
-}
+
 img {
     width: 100%;
 }
@@ -18,6 +16,7 @@ img {
     font-size: 8px;
     line-height: 12px;
     margin-inline-start: var(--spacing__4);
+    margin-block-start: 0;
 }
 
 /* ___________________________________________
@@ -100,10 +99,10 @@ img {
 
 @keyframes socialMediaFlyIn {
     from {
-        transform: translateY(100%);
+        left: -100%;
     }
     to {
-        transform: translateY(0);
+        left: 3vw;
     }
 }
 
@@ -393,6 +392,8 @@ img {
 
 .oppositeCards {
     margin-block: var(--spacing__24);
+    container-name: oppositeCards;
+    container-type: inline-size;
     
 }
 .oppositeCard {
@@ -406,6 +407,13 @@ img {
         aspect-ratio: 1/1;
         object-fit: cover;   
     }
+
+    .imageCredit {
+        display: none;
+    }
+    .imageCredit.mobile {
+        display: block;
+    }
     
     .oppositeCard__info {
         width: 90vw;
@@ -413,7 +421,7 @@ img {
         top: 80%;
         background-color: white;
         padding-inline: var(--spacing__24);
-        padding-block-start: var(--spacing__8);
+        padding-block-start: var(--spacing__20);
         padding-block-end: var(--spacing__4); /* because <p> has a margin of 1em (16px), 24 - 16 = 8*/
         box-sizing: border-box;
         border-radius: var(--borderRadius__M);
@@ -429,8 +437,73 @@ img {
     }
 }
 
+@container oppositeCards (min-width: 745px) {
+    .oppositeCard {
+        padding-inline: 10vw;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin-block-end: 0;
+
+        &.oppositeCard--first {
+            margin-block-start: var(--spacing__48);
+        }
+        
+        .oppositeCard__image {
+            width: 300px;
+            height: 500px;
+            aspect-ratio: 0.63;
+            border-radius: var(--borderRadius__M);
+            object-position: 25%;
+        }
+
+        .imageCredit {
+            display: block;
+        }
+        .imageCredit.mobile {
+            display: none;
+        }
+
+        .oppositeCard__info {
+            flex: auto;
+            position: initial;
+            height: fit-content;
+            box-shadow: none;
+            border-radius: 0;
+            padding-inline: 0;
+            padding-block-end: var(--spacing__24);
+            box-sizing: content-box;
+            
+            &.first {
+                margin-inline-start: var(--spacing__48);
+                border-bottom: solid 1px var(--grey);
+            }
+
+            &.second {
+                border-top: solid 1px var(--grey);
+                padding-block-start: var(--spacing__32);
+                margin-inline-end: var(--spacing__48);
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                text-align: right;
+
+            
+            }
+        }
+
+        .button {
+            display: block;
+            margin-block-start: var(--spacing__24);
+        }
+    }
+}
+
 .features {
     display: none;
+    width: 90vw;
+    margin-inline-start: 5vw;
+    margin-block: var(--spacing__64);
 }
 
 .features--mobile {
@@ -441,4 +514,157 @@ img {
 }
 
 
+/*_______________________________________
+                BUTTONS
+  _______________________________________*/
 
+.button {
+    text-decoration: none;
+    padding-inline: var(--spacing__24);
+    padding-block: var(--spacing__12);
+    border-radius: var(--spacing__8);
+    width: fit-content;
+    margin-block-end: var(--spacing__24);
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.button__primary {
+    background-color: var(--accent__blue);
+    color: var(--text__secondary);
+
+    &:hover {
+        background-color: var(--lightBlue);
+        color: var(--text__accent--blue);
+    }
+
+    &:active {
+        background-color: var(--lightBlue);
+        color: var(--text__accent--blue);
+        box-shadow: none;
+    }
+
+    &:disabled {
+        background-color: var(--grey);
+        box-shadow: none;
+    }
+}
+
+.button__secondary {
+    background-color: white;
+    color: var(--text__accent--blue);
+    border: solid 1px var(--accent__blue);
+
+    &:hover {
+        border: solid 1px var(--lightBlue);
+    }
+
+    &:active {
+        border: solid 1px var(--lightBlue);
+        box-shadow: none;
+    }
+
+    &:disabled {
+        background-color: var(--grey);
+        box-shadow: none;
+    }
+}
+
+/*_______________________________________
+            IMAGE SLIDER
+  _______________________________________*/
+
+.imageSlider {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    container-name: imageSlider;
+    container-type: inline-size;
+
+    .imageSlider__background {
+        width: 100vw;
+        height: 60%;
+        background-color: var(--lilacGrey);
+        position: absolute;
+        bottom: 0;
+        z-index: -1;
+    }
+
+    .imageSlider__info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .imageSlider__headline {
+        text-align: center;
+    }
+    .imageSlider__description {
+        display: none;
+    }
+}
+
+.imageSlider__indicator {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing__8);
+    position: absolute;
+    bottom: var(--spacing__16);
+
+    .imageSlider__dot {
+        width: 12px;
+        height: 12px;
+        border-radius: var(--borderRadius__M);
+        background-color: #d6d6d6;
+
+        &.active {
+            background-color: var(--accent__blue);
+        }
+    }
+}
+
+.imageCards {
+    display: flex;
+    gap: var(--spacing__40);
+    overflow: visible;
+    width: fit-content;
+    padding-inline-start: var(--spacing__32);
+}
+
+.imageCard {
+    width: 70vw;
+    max-width: 320px;
+    
+    .imageCard__image {
+        width: 100%;
+        aspect-ratio: 1/1.3;
+        object-fit: cover;
+        border: solid 12px white;
+    }
+
+    .imageCard__title {
+        margin-block-start: var(--spacing__12);
+        margin-block-end: var(--spacing__64);
+        margin-inline: var(--spacing__4);
+        
+    }
+    .imageCard__description {
+        display: none;
+    }
+}
+
+@container imageSlider (min-width: 745px) {
+    .imageSlider__background {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 745px) {
+    .features {
+        display: block;
+    }
+
+    .features--mobile {
+        display: none;
+    }
+}
