@@ -1,4 +1,4 @@
-@import url(root.css);
+@import url(constants.css);
 
 .imageCredit {
     font-size: 8px;
@@ -257,14 +257,14 @@ z-index: -2;
 .kidsFooter__island{
     position: absolute;
     z-index: 1;
-    right: 30%;
+    right: 20%;
     top: -25%;
     width: 850px;
     transition: 0.5s ease;
     
 }
 .kidsFooter__island:hover{
-    width: 1000px;
+    transform: scale(1.2);
 }
 .kidsFooter__someIcons{
     position: absolute;
@@ -288,4 +288,126 @@ z-index: -2;
 }
 .kidsFooter__tiktok{
     margin-inline-end: var(--spacing__92);
+}
+
+/*Kids interactivemap page*/
+.kidsMap__body{
+    overflow: hidden;
+}
+.kidsMap{
+    background: url(../images/map_island_background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display:grid;
+    position: relative;
+}
+.kidsMap__island{
+    width: 80%;
+    place-self: center;
+    margin-block-start: 200px;
+}
+.kidsMap__boat{
+    position: absolute;
+    bottom: 3%;
+    left: 4%;
+    animation: boat 5s ease-in infinite;
+    transform-origin: bottom center;
+}
+.kidsMap__city{
+    position: absolute;
+    width: 280px;
+    bottom: 19%;
+    left: 30%;
+}
+.kidsMap__statue{
+    position: absolute;
+    width: 45px;
+    bottom: 20%;
+    left: 52%;
+}
+.kidsMap__food{
+    position: absolute;
+    width: 60px;
+    bottom: 19%;
+    left: 26%;
+}
+.kidsMap__concert{
+    position: absolute;
+    width: 180px;
+    bottom: 24%;
+    left: 17%;
+}
+.kidsMap__resort{
+    position: absolute;
+    width: 200px;
+    left: 40%;
+    bottom: 38%;
+}
+.kidsMap__windmill{
+    position: absolute;
+    width: 110px;
+    left: 35%;
+    bottom: 30%;
+}
+.kidsMap__universe{
+    position: absolute;
+    width: 133px;
+    left: 60%;
+    bottom: 43%;
+}
+.kidsMap__beach{
+    position: absolute;
+    width: 110px;
+    right: 13%;
+    bottom: 27%;
+}
+.kidsMap__castle{
+    position: absolute;
+    width: 210px;
+    left: 55%;
+    bottom: 27%;
+}
+.kidsMap__icon:hover{
+    transform: scale(1.3);
+    transition: 0.5s ease;
+}
+.kidsMap__forest{
+    position: absolute;
+    width: 235px;
+    left: 18%;
+    bottom: 38%;
+}
+.kidsMap__animals{
+    position: absolute;
+    width: 100px;
+    left: 22%;
+    bottom: 45%;
+    z-index: -1;
+    pointer-events: none;
+}
+.kidsMap__forest:hover + .kidsMap__animals{
+    transform: scale(2.5);
+    z-index: 2;
+    transition: 1s ease;
+    transform-origin: center;
+}
+/* makes the boat sway as if in water*/
+@keyframes boat {
+    0% {
+        transform: rotate(5deg);
+    }
+    25% {
+        transform: rotate(0deg);
+    }
+   50%{
+        transform: rotate(-5deg);
+    }
+    75%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(5deg);
+    }
 }
