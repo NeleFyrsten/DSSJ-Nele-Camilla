@@ -218,7 +218,7 @@ z-index: -2;
 }
 @container kidsBanner (max-width:975px){
     .kidsBanner__headline{
-        font-size:1.2rem ;
+        font-size:1.2rem;
     }
     .kidsBanner__cloud{
         top:-45%;
