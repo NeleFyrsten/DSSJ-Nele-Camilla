@@ -48,5 +48,9 @@ function addData(data){
         productDescription.textContent = item.location;
         productDescription.classList.add("kidsSlider__location");
         productCard.appendChild(productDescription);
+
+        if (item.id === "3"){
+          productCard.classList.add("kidsSlider__card--focus");
+        }
     });
 }
