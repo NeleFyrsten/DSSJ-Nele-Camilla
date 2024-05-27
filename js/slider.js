@@ -5,11 +5,8 @@
 // 4. change pagecontent (?)
 
 
-
-
-
 // get images
-function getImages() {
+function getData() {
     fetch("js/categorySlider.json")
     .then((response) => {
         if (!response.ok) {
@@ -27,6 +24,7 @@ function getImages() {
 };
 
 function addImagesToSlider(data) {
+
     // looking for the imageID of the categoryCard
     const categorySliderCard = document.querySelectorAll('.categorySlider__card');
     categorySliderCard.forEach(categoryCard => {
@@ -38,7 +36,8 @@ function addImagesToSlider(data) {
             // getting the id of the object
             const objectId = object.id;
             console.log(objectId);
-            
+
+            //implementing the found data into html
             if(imageID == objectId) {
                 console.log(`the element ${imageID} is connected to the image ${objectId}`)
                 // getting the img in the card
@@ -54,7 +53,7 @@ function addImagesToSlider(data) {
     });
 }
 //calling the fetch function
-getImages()
+getData()
 
 
 // ----------- move the slider --------------
@@ -77,9 +76,7 @@ let cardInFocus = 4;
 //function: move the slider in the right direction and focus the right card
 function moveSlider(e) { //e = event the call comes from (either arrowPrev or arrowNext)
     const slider = document.querySelector('.categorySlider');
-    console.log(e.target);
-
-
+    
     // if you click on a card instead of an arrow
     //currentTarget: where it came from in this script, not where i actually clicked on
     if (e.currentTarget.classList.contains("categorySlider__card")) {
@@ -99,7 +96,7 @@ function moveSlider(e) { //e = event the call comes from (either arrowPrev or ar
         }
     }
     
-    // change the variable in css to the cardInFocus, so all the calculations work :)
+    // change the variable in css to the cardInFocus, so all the calculations work
     document.documentElement.style.setProperty("--currentCard", cardInFocus);
 
     // ----- changing focus card ------
@@ -112,12 +109,96 @@ function moveSlider(e) { //e = event the call comes from (either arrowPrev or ar
     const newFocus = document.querySelector(`.categorySlider__card[imageID="${cardInFocus}"]`);
     console.log(newFocus); 
     newFocus.classList.toggle('focus');
+
+    // getting the ID of the newFocus page, whose content we'd like to show
+    // we need the id to get the right data from the json file
+    const currentPage = parseInt(newFocus.getAttribute('imageID'));
+    console.log(currentPage)
+
+    getPageData(currentPage)
 }
 
+/** ________________________________________
+ *          CHANGE PAGE CONTENT
+    ________________________________________*/
+
+function getPageData(id) {
+    fetch("js/categorySlider.json")
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP Error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then((data) => {
+        console.log('Data received:', data);
+        // id is the currentPage id. cardIDs start at 1, arrayobjects at [0], therefor -1
+        // this enables us to just let the relevant object through to the next function
+        adaptHeroSection(data[id - 1]);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+// --> now we have the data of the page we want to look at
 
 //change content of the page:
 /**
+ * we want to achieve a smooth effect: just the pictures should be changed, the slider
+ * should remain as it is
+ * -->
  * just change main content (fetch from another html file)
  * change background-image of hero section,
  * change content of hero section (don't forget extra classes)
+ *
+ * 2.find the matching content in json file
+ * 3.replace src of heroImage and textContent of text
+ * 4.replace the main content with another html file
  */
+
+function adaptHeroSection(data) {
+    
+    console.log(data);
+
+    // implement data in index.html
+    
+    const heroImage = document.querySelector('.heroSection__backgroundImage');
+    heroImage.src = `${data.heroImage}`;
+
+    const heroTitle = document.querySelector('.heroSection__title');
+    heroTitle.textContent = `${data.heroTitle}`
+
+    const heroDescription = document.querySelector('.heroSection__description');
+    heroDescription.textContent = `${data.heroDescription}`
+
+    const imageCredit = document.querySelector('.imageCredit'); //possible, because this is the first Credit on the page
+    imageCredit.textContent = `Foto: ${data.imageCredit}`;
+
+    //changing the Slider background, so it fits the image
+    const slider = document.querySelector('.categorySlider');
+    slider.style.background = `linear-gradient(0deg, ${data.backgroundColor} 0%, ${data.backgroundColor} calc(100% - 50px), #ffffff00 calc(100% - 20px))`
+
+    
+    // "Alle kategorier" and the others differ in certain elements, such as image and description in mobile mode
+    // variables, which are needed in both cases, but are used differently:
+    const heroText = document.querySelector('.heroSection__text');
+    const heroDescriptionMobile = document.querySelector('.heroSection__description--mobile');
+    const heroImageMobile = document.querySelector('.heroSection__backgroundImage--mobile');
+
+    if (data.id === "4") {
+        heroImageMobile.src = `${data.heroImageMobile}`;
+        heroDescriptionMobile.textContent = `${data.heroDescriptionMobile}`;
+    }
+
+    else {
+        heroImageMobile.src = `${data.heroImage}`;
+        heroDescriptionMobile.textContent = `${data.heroDescription}`;
+
+        heroImage.classList.add('heroSection__backgroundImage--category');
+        heroText.classList.add('heroSection__text--category');
+
+    }
+   
+    
+}   
+
