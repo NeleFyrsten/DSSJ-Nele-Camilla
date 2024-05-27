@@ -34,7 +34,14 @@ img {
 .heroSection__main {
     position: relative;
 
-    .heroSection__backgroundImage .heroSection__backgroundImage--mobile {
+    .heroSection__backgroundImage {
+        display: block;
+        width: 100%;
+        z-index: -1;
+    }
+
+    .heroSection__backgroundImage--mobile {
+        display: none;
         width: 100%;
         z-index: -1;
     }
@@ -44,6 +51,7 @@ img {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+        max-width: 40vw;
         position: absolute;
         bottom: calc(12% + 50px);
         right: 4vw;
@@ -51,10 +59,32 @@ img {
         color: var(--text__secondary);
 
         animation-name: heroTextFlyIn;
-        animation-duration: 2s;
-       
+        animation-duration: 2s; 
+
         .heroSection__title {
             margin: 0;
+            font-size: 4.5rem;
+            line-height: 5.5rem;
+        }
+
+        .heroSection__description--mobile {
+            display: none;
+        }
+    }
+
+    .heroSection__text--category {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        max-width: 47vw;
+        position: absolute;
+        top: 6vw;
+        left: 6vw;
+        color: var(--text__secondary);
+
+        .heroSection__title {
+            font-weight: 400;
         }
     }
 }
@@ -107,7 +137,7 @@ img {
 }
 
 .socialMedia--mobile {
-    background-color: #262525;
+    background-color: #21171F;
     display: none;
     padding: var(--spacing__24);
     margin: 0;
@@ -169,6 +199,7 @@ img {
     .slider__arrow {
         position: absolute;
         /*calculation of the middle of the imageheight (ratio:1/1.7 - look at categorySlider__image*/
+        top: calc(var(--cardWidth) * 1.7 / 2);
         translate: 0 -50%;
         cursor: pointer;
         z-index: 5;
@@ -249,75 +280,63 @@ img {
 
 /* ------------- container queries for different screen sizes -------------*/
 
-@container heroSection (min-width: 1250px) {
-    .heroSection__backgroundImage {
-        display: block;
-    }
-    .heroSection__backgroundImage--mobile {
-        display: none;
-    }
-    .heroSection__text {
-        max-width: 40vw;
-
-        .heroSection__title {
-            font-size: 4.5rem;
-            line-height: 5.5rem;
-        }
-        .heroSection__description--mobile {
-            display: none;
-        }
-    }
-    .slider__arrow {
-        top: calc(var(--cardWidth) * 1.7 / 2);
-    }
-}
-
 @container heroSection (max-width: 1250px) {
-    .heroSection__backgroundImage {
-        display: block;
-    }
-    .heroSection__backgroundImage--mobile {
-        display: none;
-    }
-    .heroSection__text {
-        max-width: 52vw;
-
-        .heroSection__title {
-            font-size: 3rem;
-            line-height: 3.5rem;
+/*changing text size to fit the screen better
+__text is nested into __main, because it originally is and to not be overwritten it needs to have
+the same nesting in this query*/
+    .heroSection__main {
+        .heroSection__text {
+            max-width: 52vw;
+            
+            .heroSection__title {
+                font-size: 3rem;
+                line-height: 3.5rem;
+            }
         }
-        .heroSection__description--mobile {
-            display: none;
-        }
-    }
-    .slider__arrow {
-        top: calc(var(--cardWidth) * 1.7 / 2);
     }
 }
+
 /* container mobile*/
 @container heroSection (max-width:800px) {
-    .heroSection__backgroundImage {
-        display: none;
-    }
-    .heroSection__backgroundImage--mobile {
-        display: block;
-        width: 150%;
-        transform: translateX(-25%);
-    }
-    .heroSection__text {
-        max-width: 80vw;
-
-        .heroSection__title {
-            font-size: 2.25rem;
-            line-height: 3rem;
-        }
-        .heroSection__description {
+    .heroSection__main {
+        .heroSection__backgroundImage {
             display: none;
         }
-        .heroSection__description--mobile {
+        .heroSection__backgroundImage--mobile {
             display: block;
-            margin: 0;
-            text-shadow: 0px 2px 4px rgba(0,0,0,0.8);
+            width: 200%;
+            transform: translateX(-25%);
+            
+        }
+        
+        .heroSection__text {
+            max-width: 80vw;
+            
+            .heroSection__title {
+                font-size: 2.25rem;
+                line-height: 3rem;
+                text-shadow: 0px 2px 4px rgba(0,0,0,0.8);
+            }
+            .heroSection__description {
+                display: none;
+            }
+            .heroSection__description--mobile {
+                display: block;
+                font-weight: 600;
+                margin: 0;
+                text-shadow: 0px 2px 4px rgba(0,0,0,0.8);
+            }
+        }
+        .heroSection__text--category {
+            align-items: flex-end;
+            text-align: right;
+            max-width: 80vw;
+            left: 16vw; /* width: 80, home is right: 4vw --> 100-80-4 = left:16vw*/
+            top: auto;
+
+            .heroSection__title {
+                font-weight: bold;
+            }
         }
     }
 
@@ -342,15 +361,25 @@ img {
             transform: translateX(-50%);
         }
         
+        .categorySlider__image{
+            filter: grayscale(0.2);
+        }
+
         &.focus {
+
+            .categorySlider__image {
+                filter: grayscale(0);
+            }
             .categorySlider__title {
                 display: block;
                 font-size: 1rem;
             }
         }
     }
-    .slider__arrow {
-        top: calc(var(--cardWidthMobile) * 1.7 / 2);
+    .slider__arrows {
+        .slider__arrow {
+            top: calc(var(--cardWidthMobile) * 1.7 / 2);
+        }
     }
 }
  /* for the soMe section */

@@ -173,21 +173,25 @@ function adaptHeroSection(data) {
 
     const imageCredit = document.querySelector('.imageCredit'); //possible, because this is the first Credit on the page
     imageCredit.textContent = `Foto: ${data.imageCredit}`;
-
-    //changing the Slider background, so it fits the image
-    const slider = document.querySelector('.categorySlider');
-    slider.style.background = `linear-gradient(0deg, ${data.backgroundColor} 0%, ${data.backgroundColor} calc(100% - 50px), #ffffff00 calc(100% - 20px))`
-
     
-    // "Alle kategorier" and the others differ in certain elements, such as image and description in mobile mode
+    
+    // "Alle kategorier" and the others differ in certain elements, such as image, sliderBackground and description in mobile mode
     // variables, which are needed in both cases, but are used differently:
     const heroText = document.querySelector('.heroSection__text');
     const heroDescriptionMobile = document.querySelector('.heroSection__description--mobile');
     const heroImageMobile = document.querySelector('.heroSection__backgroundImage--mobile');
-
+    const slider = document.querySelector('.categorySlider');
+    const socialMedia = document.querySelector('.socialMedia');
+    
     if (data.id === "4") {
         heroImageMobile.src = `${data.heroImageMobile}`;
         heroDescriptionMobile.textContent = `${data.heroDescriptionMobile}`;
+
+        //removing --category classes, because otherwise they're still there once a category page was chosen
+        heroImage.classList.remove('heroSection__backgroundImage--category');
+        heroText.classList.remove('heroSection__text--category');
+        slider.style.background = 'linear-gradient(0deg, #0a423c 0%, #0a423c calc(100% - 50px), #ffffff00 calc(100% - 20px))';
+        socialMedia.style.display = 'flex';
     }
 
     else {
@@ -196,9 +200,9 @@ function adaptHeroSection(data) {
 
         heroImage.classList.add('heroSection__backgroundImage--category');
         heroText.classList.add('heroSection__text--category');
-
+        heroText.classList.remove('.heroSection__text')
+        slider.style.background = 'linear-gradient(0deg, #21171F 0%, #21171F calc(100% - 50px), #ffffff00 calc(100% - 20px))';
+        socialMedia.style.display = 'none'
     }
-   
-    
 }   
 
