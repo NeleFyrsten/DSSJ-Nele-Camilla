@@ -1,0 +1,37 @@
+[
+    {
+    "id": "1",
+    "image": "../images/nature_forest.png",
+    "imageCredit": "Søren Laurids Moos",
+    "title": "Skovture i Sønderborg",
+    "location": "Sønderborg"
+},
+{
+    "id": "2",
+    "image":"../images/nature_garden.png",
+    "imageCredit": "Destination Sønderjylland",
+    "title": "Den kongelige slotshave",
+    "location": "Gråsten"
+},
+{
+    "id": "3",
+    "image":"../images/nature__horseriding.png",
+    "imageCredit": "Niclas Jessen",
+    "title": "Ridetur på Als",
+    "location": "Als"
+},
+{
+    "id": "3",
+    "image":"../images/nature_bikes.png",
+    "imageCredit": "Destination Sønderjylland",
+    "title": "Cykeltur på Als",
+    "location": "Als"
+},
+{
+    "id": "4",
+    "image":"../images/nature_shelter.png",
+    "imageCredit": "Sønderborg kommune",
+    "title": "Overnatning i natur",
+    "location": "Als"
+}
+]
