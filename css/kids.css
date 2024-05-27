@@ -74,11 +74,8 @@
 .kidsSlider :nth-of-type(3n){  /* Every 3rd card gets the blue gradient background */
     background: var(--gradient__blue);
 }
-.kidsSlider :nth-of-type(3n+1){ /* Every card after ever 3rd card gets the background color orange */
+.kidsSlider .kidsSlider__card:nth-of-type(3n+1){ /* Every card after every 3rd card gets the background color green */
     background: var(--gradient__green);
-}
-.kidsSlider :nth-of-type(n) > *{ /* there was an issue with this method where the above affects the non direct children, so this is to exclude them*/
-    background: none;
 }
 .kidsSlider__location{
     flex-grow: 1;
@@ -199,7 +196,7 @@
 }
 .kidsBanner__headline{
     color: var(--text__secondary);
-    font-size: 1.7rem; /* SKAL ÆNDRES*/
+    font-size: 1.7rem;
     padding-inline: var(--spacing__20);
 }
 .kidsBanner__highlight{
