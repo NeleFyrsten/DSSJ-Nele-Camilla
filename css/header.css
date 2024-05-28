@@ -10,7 +10,7 @@
     container-type: inline-size;
     container-name: header;
     background-color: white;
-    position: relative;
+    position: fixed;
     z-index: 1;
 }
 .header__targetGroups {
