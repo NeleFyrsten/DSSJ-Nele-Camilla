@@ -11,7 +11,7 @@
     background-repeat: no-repeat;
     background-size:cover;
     width: 100vw;
-    height: 450px;
+    height: 550px;
     display: grid;
     place-items: center;
     margin-block-start: -100px;
@@ -230,9 +230,26 @@ z-index: -2;
 }
 .kidsEventSlider__card{
     background-color: #FFE6BB;
+    color: #EF9906;
     width: 310px;
     height: 382px;
     border-radius: var(--borderRadius__S);
+
+    & p{
+        margin-inline-start: var(--spacing__8);
+    }
+    & svg{
+        margin-block-end: -3px;
+        margin-inline-end: 4px;
+    }
+}
+.kidsEventSlider .kidsEventSlider__card:nth-of-type(3n){
+    background-color: #CAE8F7;
+    color: #24A6F0;
+}
+.kidsEventSlider .kidsEventSlider__card:nth-of-type(3n+1){
+    background-color: #F7D0D3;
+    color: #FF7983;
 }
 .kidsEventSlider__img{
     object-fit: cover;
@@ -240,6 +257,7 @@ z-index: -2;
     height: 244px;
     border-radius: var(--borderRadius__S) var(--borderRadius__S) 0 0;
 }
+
 /*Footer for the kids page*/
 .kidsFooter{
     position: relative;
@@ -315,25 +333,25 @@ z-index: -2;
 .kidsMap__city{
     position: absolute;
     width: 280px;
-    bottom: 19%;
-    left: 30%;
+    bottom: 10%;
+    left: 32%;
 }
 .kidsMap__statue{
     position: absolute;
     width: 45px;
-    bottom: 20%;
+    bottom: 10%;
     left: 52%;
 }
 .kidsMap__food{
     position: absolute;
     width: 60px;
-    bottom: 19%;
-    left: 26%;
+    bottom: 10%;
+    left: 28%;
 }
 .kidsMap__concert{
     position: absolute;
     width: 180px;
-    bottom: 24%;
+    bottom: 17%;
     left: 17%;
 }
 .kidsMap__resort{
@@ -345,26 +363,26 @@ z-index: -2;
 .kidsMap__windmill{
     position: absolute;
     width: 110px;
-    left: 35%;
-    bottom: 30%;
+    left: 37%;
+    bottom: 25%;
 }
 .kidsMap__universe{
     position: absolute;
     width: 133px;
     left: 60%;
-    bottom: 43%;
+    bottom: 40%;
 }
 .kidsMap__beach{
     position: absolute;
     width: 110px;
-    right: 13%;
-    bottom: 27%;
+    right: 15%;
+    bottom: 20%;
 }
 .kidsMap__castle{
     position: absolute;
     width: 210px;
-    left: 55%;
-    bottom: 27%;
+    left: 50%;
+    bottom: 20%;
 }
 .kidsMap__icon:hover{
     transform: scale(1.3);
@@ -374,13 +392,13 @@ z-index: -2;
     position: absolute;
     width: 235px;
     left: 18%;
-    bottom: 38%;
+    bottom: 34%;
 }
 .kidsMap__animals{
     position: absolute;
     width: 100px;
     left: 22%;
-    bottom: 45%;
+    bottom: 42%;
     z-index: -1;
     pointer-events: none;
 }
