@@ -752,8 +752,6 @@ the same nesting in this query*/
                     transition: color 0.2s;
                 }
 
-                .imageCard__title {}
-
                 .imageCard__description {
                     display: block;
                 }
