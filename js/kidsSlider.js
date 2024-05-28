@@ -47,7 +47,6 @@ function addData(data){
         productTitle.classList.add("kidsSlider__title");
         productCard.appendChild(productTitle);
 
-
         //create the location
         const productDescription = document.createElement("p");
         productDescription.textContent = item.location;
