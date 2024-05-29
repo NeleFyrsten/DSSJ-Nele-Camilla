@@ -71,10 +71,12 @@
         display: block;
     }
 }
-.kidsSlider :nth-of-type(3n){  /* Every 3rd card gets the blue gradient background */
+.kidsSlider :nth-of-type(3n){  
+    /* Every 3rd card gets the blue gradient background */
     background: var(--gradient__blue);
 }
-.kidsSlider .kidsSlider__card:nth-of-type(3n+1){ /* Every card after every 3rd card gets the background color green */
+.kidsSlider .kidsSlider__card:nth-of-type(3n+1){ 
+    /* Every card after every 3rd card gets the background color green */
     background: var(--gradient__green);
 }
 .kidsSlider__location{
