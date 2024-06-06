@@ -1,29 +1,90 @@
 /**
  * 1. progressBar: scroll
- * 2. category you come from is checked
- * 3. all categories = all checked
- * 4. age + accessibility --> when you click label checkbox is checked (active class!)
- * 5. interval: only one check allowed
+ *     
  * 6. submit --> velkommen "fornavn"
- * 7. open/close animation 
- * 8. when opening newsletter --> hide welcome text beneath
- *
+ *         
  * fornavn: localstorage
  * 
  */
 
+//global variables
+const inform = document.querySelector('.newsletter__inform');
+const signUp = document.querySelector('.newsletter__signUp');
+const welcome = document.querySelector('.welcome');
 
 // open newsletter
-const openButton = document.querySelector('.openNewsletter');
-openButton.addEventListener('click', openNewsletter);
+const openNewsletter = document.querySelector('.openNewsletter');
+openNewsletter.addEventListener('click', () => {
 
-function openNewsletter() {
-    const inform = document.querySelector('.newsletter__inform');
-    inform.classList.toggle('active');
+        inform.classList.toggle('active');
+        signUp.classList.toggle('active');
+        welcome.classList.toggle('inactive');
+});
+    
+//close newsletter
+const closeNewsletter = document.querySelector('.icon__close');
+closeNewsletter.addEventListener('click', () => {
 
-    const signUp = document.querySelector('.newsletter__signUp');
-    signUp.classList.toggle('active');
+        signUp.classList.toggle('active');
+        inform.classList.toggle('active');
+        welcome.classList.toggle('inactive');
+});
 
-    const welcome = document.querySelector('.welcome');
-    welcome.classList.toggle('inactive');
+
+//check all categories 
+const allCategories = document.querySelector('.newsletter__checkbox--allCategories');
+allCategories.addEventListener('change', checkAllCategories);
+
+function checkAllCategories() {
+    const category = document.querySelectorAll('.newsletter__checkbox');
+
+    if(allCategories.checked == true) {
+        category.forEach(checkbox => {
+            checkbox.checked = true;
+        })
+    }
+
+    else {
+        category.forEach(checkbox => {
+            checkbox.checked = false;
+        })
+    }
 }
+
+//submitting
+const submitButton = document.querySelector('.newsletter__submitButton');
+const signUpForm = document.querySelector('.newsletter__signUpForm');
+const submittedScreen = document.querySelector('.newsletter__submitted');
+
+submitButton.addEventListener('click', submissionComplete) 
+
+function submissionComplete() {
+    // getting the name
+    const inputFirstName = document.querySelector('.newsletter__firstName');   
+    const firstName = inputFirstName.value;
+
+    const welcome = document.querySelector('.newsletter__headline--submitted');
+    welcome.textContent = `Velkommen ${firstName}!`;
+    // changing content of right side
+    signUpForm.classList.toggle('active');
+    submittedScreen.classList.toggle('active');
+}
+
+//tilbage til siden
+const backButton = submittedScreen.querySelector('button');
+console.log(backButton);
+backButton.addEventListener('click', backToPage);
+
+function backToPage() {
+    signUp.classList.toggle('active');
+    inform.classList.toggle('active');
+    welcome.classList.toggle('inactive');
+
+    signUpForm.classList.toggle('active');
+    submittedScreen.classList.toggle('active');    
+}
+
+
+
+
+

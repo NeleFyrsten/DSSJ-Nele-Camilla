@@ -672,6 +672,10 @@ the same nesting in this query*/
 }
 
 @media screen and (min-width: 745px) {
+    .button {
+        font-size: 20px;
+    }
+
     .imageSlider {
         flex-direction: row;
         align-items: center;
@@ -776,14 +780,16 @@ the same nesting in this query*/
 /*________________________________________
                 NEWSLETTER
   ________________________________________*/
+.category__main {
+    container-name: newsletter;
+    container-type: inline-size;
+}
 
 .category__top {
     margin-block-start: 50px;
     display: flex;
     position: relative;
     width: 100vw;
-    container-name: newsletter;
-    container-type: inline-size;
 
     .welcome.inactive {
         display:none
@@ -894,29 +900,21 @@ the same nesting in this query*/
         bottom: 0;
     }
 }
-
 .newsletter__signUpForm {
+    display: none;
+}
+
+.newsletter__signUpForm.active {
     display: block;
     width: 61.8%;
     padding: 50px;
     box-sizing: border-box;
     overflow-y: scroll;
 
+
     > section { /*direct children*/
         padding-block-end: var(--spacing__48);
         border-bottom: solid 1px var(--grey);
-    }
-
-    section {
-        /* &::not(.newsletter__personalData .newsletter__categories) { */
-        animation: fade linear both;
-        animation-timeline: view(block);
-        animation-range: cover 0% cover 100%;
-    }
-
-    @keyframes fade {
-        0% {opacity: 0;}
-        100% {opacity: 1;}
     }
 
     .newsletter__personalData {
@@ -946,6 +944,10 @@ the same nesting in this query*/
     }
 
     .newsletter__categories {
+        animation: fade linear both;
+        animation-timeline: view(block);
+        animation-range: cover 10% cover 70%;
+
         display: grid;
         grid-template-columns: min-content auto;
         column-gap: var(--spacing__8);
@@ -962,6 +964,9 @@ the same nesting in this query*/
     }
 
     .newsletter__specify {
+        animation: fade linear both;
+        animation-timeline: view(block);
+        animation-range: cover 10% cover 50%;
 
         .newsletter__headline {
             margin-block-end: 0;
@@ -987,6 +992,11 @@ the same nesting in this query*/
                 border: solid 1px var(--accent__blue);
                 border-radius: 16px;
                 margin-inline-end: var(--spacing__12);
+                }
+
+            .newsletter__checkbox--age:checked + label { /* + is for siblings*/
+                background-color: var(--accent__blue);
+                color: white;
             }
         }
 
@@ -994,18 +1004,21 @@ the same nesting in this query*/
             
             label {
                 margin-inline-end: var(--spacing__12);
+            }
 
-                &.active {
-                    svg {
-                        fill: var(--mintgreen);
-                    }
+            input:checked + label {
+                .accessibility__background {
+                    fill: var(--mintgreen)
                 }
             }
         }
     }
 
     .newsletter__interval {
-        
+        animation: fade linear both;
+        animation-timeline: view(block);
+        animation-range: cover 10% cover 50%;
+
         .interval__choice {
             display: flex;
             gap: var(--spacing__12);
@@ -1046,6 +1059,9 @@ the same nesting in this query*/
 
     .newsletter__submit {
         border: none;
+        animation: fade linear both;
+        animation-timeline: view(block);
+        animation-range: cover 10% cover 20%;
 
         .newsletter__alert {
             color: var(--text__accent--primary);
@@ -1059,10 +1075,27 @@ the same nesting in this query*/
         input {
             font-size: 20px;
         }
-
     }
 }
 
+.newsletter__submitted {
+    display: none;
+
+    &.active {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 50px;
+
+        .newsletter__headline {
+            margin: 0;
+        }
+
+        .button {
+            margin-top: var(--spacing__24);
+        }
+    }
+}
 
 .newsletter__inform {
     display: none;
@@ -1088,6 +1121,22 @@ the same nesting in this query*/
 
 
 @container newsletter (max-width:1100px) {
+    .category__top {
+        display: block;
+    }
+    .newsletter__inform.active {
+        margin-inline-start: 10%;
+        margin-inline-end: 15%;
+    }
+    .newsletter__signUp {
+        opacity: 1;
+        position: absolute;
+        top: -50px;
+        left: 100%;
+        width: 100vw;
+        height: 100vh;
+        transition: 0.6s linear;
+    }
     .newsletter__signUp.active {
         display: block;
         width: 100vw;
@@ -1102,10 +1151,12 @@ the same nesting in this query*/
 
         .icon__close {
             left: calc(100% - 20px - 35px);
+            top: 20px;
         }
 
         .newsletter__headline--main {
             font-size: 24px;
+            margin-block-start: 0;
         }
         .newsletter__headline {
             font-size: 20px;
@@ -1115,6 +1166,7 @@ the same nesting in this query*/
         width: 100%;
         position: sticky;
         top: 0;
+        z-index: 4;
         background: white;
 
         .newsletter__image {
@@ -1156,10 +1208,10 @@ the same nesting in this query*/
             }
         }
     }
-    .newsletter__signUpForm {
+    .newsletter__signUpForm.active {
         width: 100vw;
         box-sizing: border-box;
-        padding: var(--spacing__32);
+        padding: 0 var(--spacing__32);
 
         .newsletter__personalData {
             input {
@@ -1170,6 +1222,16 @@ the same nesting in this query*/
             width: 100%;
         }
     }
+
+    .newsletter__submitted {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
 
 

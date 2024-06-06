@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <main>
+    <main class="category__main">
         <section class="category__top">
             <section class="welcome">
                 <h2 class="welcome__headline">Hvad er en aktiv ferie</h2>
@@ -24,8 +24,8 @@
                 </section>
                 <section class="newsletter__signUp">
                     <img class="newsletter__icon" src="../images/category__newsletter.png" alt="">
-                    <img class="icon icon__close" src="../images/icon__close.png" alt="">
                     <section class="newsletter__aside">
+                        <img class="icon icon__close" src="../images/icon__close.png" alt="">
                         <img class="newsletter__image" src="../images/Newsletter.jpeg" alt="">
                         <section class="newsletter__progressBar">
                             <span class="progressBar__dot active" data-description="personlige oplysninger"></span>
@@ -35,7 +35,7 @@
                             <span class="progressBar__dot" data-description="vælg interval"></span>
                         </section>
                     </section>
-                    <form action="#" class="newsletter__signUpForm">
+                    <form action="#" class="newsletter__signUpForm active" onsubmit="return false">
                         <section class="newsletter__personalData">
                             <h5 class=" newsletter__headline newsletter__headline--main">Opret dit personlige nyhedsbrev</h5>
                             <label for="email" class="newsletter__label">email*</label>
@@ -65,20 +65,21 @@
                             <p class="newsletter__description">Hvis du ikke har brug for det scroll bare videre ned</p>
                             <section class="newsletter__age">
                                 <p class="newsletter__subheadline"><strong>Alder børn</strong></p>
+                                <input type="checkbox" name="age1" id="age1" class="newsletter__checkbox--age">
                                 <label for="age1">0 - 2</label>
-                                <input type="checkbox" name="age1" class="newsletter__checkbox--age">
+                                <input type="checkbox" name="age2" id="age2" class="newsletter__checkbox--age">
                                 <label for="age2">2 - 5</label>
-                                <input type="checkbox" name="age2" class="newsletter__checkbox--age">
+                                <input type="checkbox" name="age3" id="age3" class="newsletter__checkbox--age">
                                 <label for="age3">5 - 10</label>
-                                <input type="checkbox" name="age3" class="newsletter__checkbox--age">
+                                <input type="checkbox" name="age4" id="age4" class="newsletter__checkbox--age">
                                 <label for="age4">10 +</label>
-                                <input type="checkbox" name="age4" class="newsletter__checkbox--age">
                             </section>
                             <section class="newsletter__accessibility">
                                 <p class="newsletter__subheadline"><strong>Tilgængelighed</strong></p>
+                                <input type="checkbox" name="stroller" id="stroller" class="newsletter__checkbox--accessibility">
                                 <label for="stroller">
                                     <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="29" cy="29" r="28" stroke="#D0EAE3" stroke-width="2"/>
+                                        <circle class="accessibility__background" cx="29" cy="29" r="28" stroke="#D0EAE3" stroke-width="2"/>
                                         <path d="M20.6043 14.1462L31.8598 18.0211L23.1876 26.5089H36.4728L43.1154 21.3424L43.8534 22.265L28.9076 33.8895L33.1515 36.2882L32.9669 37.5799L27.8005 34.8121L22.0805 39.2405L21.1579 38.3179L26.5089 34.2586L14.1462 27.4314L20.6043 14.1462Z" fill="black" stroke="black"/>
                                         <ellipse cx="19.4974" cy="40.3475" rx="3.13678" ry="3.13678" fill="black"/>
                                         <circle cx="36.288" cy="39.4252" r="4.4284" fill="black"/>
@@ -86,10 +87,10 @@
                                         <ellipse cx="36.2884" cy="39.4249" rx="1.47613" ry="1.47613" fill="#D0EAE3"/>
                                         </svg>     
                                 </label>
-                                <input type="checkbox" name="stroller" class="newsletter__checkbox--accessibility">
+                                <input type="checkbox" name="wheelchair" id="wheelchair" class="newsletter__checkbox--accessibility">
                                 <label for="wheelchair">
                                     <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="29" cy="29" r="28" stroke="#D0EAE3" stroke-width="2"/>
+                                        <circle class="accessibility__background" cx="29" cy="29" r="28" stroke="#D0EAE3" stroke-width="2"/>
                                         <path d="M18.9246 28.848L14.7698 31.2731L17.0549 24.3009C17.0549 24.3009 24.7414 21.5727 25.1569 21.4211C25.5724 21.2696 29.3117 21.4211 29.3117 21.4211C31.8132 21.8296 32.4348 23.071 32.4279 23.6947L31.3891 29.909C30.0596 28.3327 26.6803 27.9386 25.1569 27.9386V24.7556L19.3401 26.5745L18.9246 28.848Z" fill="black"/>
                                         <path d="M38.6601 31.2731L33.0511 31.1215C34.3806 31.3641 37.8984 37.3864 39.4911 40.3673C39.8373 40.9231 40.9037 41.8528 42.3995 41.1252C43.8732 40.4084 43.6529 39.927 43.4474 39.478L43.4382 39.4578L38.6601 31.2731Z" fill="black"/>
                                         <path d="M34.713 40.3673C34.8792 40.1248 35.0593 39.3568 35.1285 39.0031L39.2833 42.1861H43.8537V43.2471H38.6601L34.713 40.3673Z" fill="black"/>
@@ -101,10 +102,10 @@
                                         <ellipse cx="23.9102" cy="36.4273" rx="2.28516" ry="1.66726" fill="#D0EAE3"/>
                                         </svg>
                                 </label>
-                                <input type="checkbox" name="wheelchair" class="newsletter__checkbox--accessibility">
+                                <input type="checkbox" name="dog" id="dog" class="newsletter__checkbox--accessibility">
                                 <label for="dog">
                                     <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="29" cy="29" r="28" stroke="#D0EAE3" stroke-width="2"/>
+                                        <circle class="accessibility__background" cx="29" cy="29" r="28" stroke="#D0EAE3" stroke-width="2"/>
                                         <path d="M33.5248 17.8945L30.7846 21.8131L37.1214 25.5614L38.149 23.0058H42.2593C44.1775 20.6887 43.972 19.5415 43.6294 19.2575C42.4877 18.8032 40.2041 17.7923 40.2041 17.3834C40.2041 16.9745 39.5191 16.6451 39.1765 16.5315H35.7513C35.7513 15.4411 34.267 14.487 33.5248 14.1462V17.8945Z" fill="black"/>
                                         <path d="M37.1214 28.4578L29.2432 23.6873L27.8732 24.5392H20.3375C19.3784 24.5392 18.5678 24.9935 18.2823 25.2207C17.3233 25.357 16.5126 23.8009 16.2272 23.0058C15.6563 22.3243 14.4459 21.3702 14.1719 23.0058C13.8979 24.6414 15.8846 26.5269 16.9122 27.2652C16.6838 28.1738 16.2956 30.1956 16.5696 31.0134C16.8436 31.8312 16.6838 33.5123 16.5696 34.2506L15.1995 36.1247V42.599C16.8436 44.5072 18.2823 43.3941 18.7961 42.599V37.3173C20.4402 36.3632 21.993 34.4209 22.5639 33.5691H32.4972C32.3602 36.5677 33.1252 39.9298 33.5248 41.236C33.639 42.0311 34.1756 43.6212 35.4087 43.6212C36.6418 43.6212 36.8359 42.2582 36.7788 41.5767C35.6827 36.8062 35.8654 34.0234 36.0938 33.2283L37.1214 31.8653V28.4578Z" fill="black"/>
                                         <path d="M24.2766 35.7839L21.3651 38.3396L22.0502 41.5767C22.2214 42.4854 22.9064 44.2005 24.2766 43.7916C25.6468 43.3827 25.6467 42.1446 25.4755 41.5767L24.2766 35.7839Z" fill="black"/>
@@ -113,20 +114,19 @@
                                         <path d="M24.2766 35.7839L21.3651 38.3396L22.0502 41.5767C22.2214 42.4854 22.9064 44.2005 24.2766 43.7916C25.6468 43.3827 25.6467 42.1446 25.4755 41.5767L24.2766 35.7839Z" stroke="black"/>
                                         </svg>                                        
                                 </label>
-                                <input type="checkbox" name="dog" class="newsletter__checkbox--accessibility">
                             </section>
                         </section>
                         <section class="newsletter__interval">
                             <h6 class="newsletter__headline">Hvor tit vil du gerne få nyhedsbrevet?</h6>
                             <section class="interval__choice interval__choice--normal">
-                                <input type="checkbox" name="intervalNormal" class="newsletter__checkbox--interval" checked>
+                                <input type="radio" name="interval" id="intervalNormal" class="newsletter__checkbox--interval" checked>
                                 <label for="intervalNormal" class="interval__label">
                                     <p><strong>normal</strong></p>
                                     <p>(afhængig af antal nye informationer)</p>
                                 </label>
                             </section>
                             <section class="interval__choice interval__choice--periodic">
-                                <input type="checkbox" name="intervalPeriodic" class="newsletter__checkbox--interval">
+                                <input type="radio" name="interval" id="intervelPeriodic" class="newsletter__checkbox--interval">
                                 <label for="intervalPeriodic" class="interval__label">
                                     <p><strong>periodisk</strong></p>
                                     <section class="interval__select">
@@ -164,7 +164,7 @@
                                 </label>
                             </section>
                             <section class="interval__choice interval__choice--interval">
-                                <input type="checkbox" name="intervalInterval" class="newsletter__checkbox--interval">
+                                <input type="radio" name="interval" id="intervalInterval" class="newsletter__checkbox--interval">
                                 <label for="intervalInterval" class="interval__label">
                                     <p><strong>interval</strong></p>
                                     <section class="interval__select">
@@ -189,6 +189,11 @@
                             <input type="submit" name="submit" class="newsletter__submitButton button button__primary">
                         </section>
                     </form>
+                    <section class="newsletter__submitted">
+                        <h5 class=" newsletter__headline newsletter__headline--main newsletter__headline--submitted"></h5>
+                        <p>Vi har sendt en bekræftelse af din tilmelding til din email adresse.</p>
+                        <button class="button button__primary">tilbage til siden</button>
+                    </section>
                 </section>
             </section>
         </section>

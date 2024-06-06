@@ -195,6 +195,7 @@ function adaptHeroSection(data) {
         slider.style.background =
             "linear-gradient(0deg, #0a423c 0%, #0a423c calc(100% - 50px), #ffffff00 calc(100% - 20px))";
         socialMedia.style.display = "flex";
+        
     } else {
         heroImageMobile.src = `${data.heroImage}`;
         heroDescriptionMobile.textContent = `${data.heroDescription}`;
@@ -211,6 +212,6 @@ function adaptHeroSection(data) {
 }
 
 function changeMainContent() {
-    
+
 }
 
