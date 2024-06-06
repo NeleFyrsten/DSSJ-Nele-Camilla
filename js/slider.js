@@ -206,4 +206,11 @@ function adaptHeroSection(data) {
             "linear-gradient(0deg, #262525 0%, #262525 calc(100% - 50px), #ffffff00 calc(100% - 20px))";
         socialMedia.style.display = "none";
     }
+
+    changeMainContent();
 }
+
+function changeMainContent() {
+    
+}
+
