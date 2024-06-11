@@ -606,6 +606,7 @@ the same nesting in this query*/
     flex-direction: column;
     container-name: imageSlider;
     container-type: inline-size;
+    z-index: -1;
 
     .imageSlider__background {
         display: none;
@@ -786,7 +787,7 @@ the same nesting in this query*/
 }
 
 .category__top {
-    margin-block-start: 50px;
+    margin-block: 50px;
     display: flex;
     position: relative;
     width: 100vw;
@@ -806,6 +807,7 @@ the same nesting in this query*/
     width: 10px;
     height: 10px;
     transition: 0.6s linear;
+    z-index: 10;
 
     .newsletter__icon {
         position: absolute;
@@ -865,6 +867,7 @@ the same nesting in this query*/
             width: 18px;
             border-radius: 24px;
             border: solid 2px var(--lightBlue);
+            transition: 1s ease;
 
             &:after {
                 content: attr(data-description);
@@ -894,12 +897,13 @@ the same nesting in this query*/
         }
     }
     .newsletter__image {
-        width: 100%;
+        min-width: 100%;
         height: 55%;
         position: absolute;
         bottom: 0;
     }
 }
+
 .newsletter__signUpForm {
     display: none;
 }
@@ -946,7 +950,7 @@ the same nesting in this query*/
     .newsletter__categories {
         animation: fade linear both;
         animation-timeline: view(block);
-        animation-range: cover 10% cover 70%;
+        animation-range: cover 10% cover 50%;
 
         display: grid;
         grid-template-columns: min-content auto;
@@ -1017,7 +1021,7 @@ the same nesting in this query*/
     .newsletter__interval {
         animation: fade linear both;
         animation-timeline: view(block);
-        animation-range: cover 10% cover 50%;
+        animation-range: cover 10% cover 40%;
 
         .interval__choice {
             display: flex;
@@ -1061,7 +1065,7 @@ the same nesting in this query*/
         border: none;
         animation: fade linear both;
         animation-timeline: view(block);
-        animation-range: cover 10% cover 20%;
+        animation-range: cover 0% cover 10%;
 
         .newsletter__alert {
             color: var(--text__accent--primary);
@@ -1075,7 +1079,66 @@ the same nesting in this query*/
         input {
             font-size: 20px;
         }
+         /*container omkring submit button, to create a "border"*/
+        .newsletter__submit--action {
+            position: relative;
+            height: 50.5px;
+            width: 109.8px;
+            border-radius: 8px;
+
+            .newsletter__submitButton {
+                position: absolute;
+                left: 2px;
+                top: 2px;
+                margin: 0;
+
+                &.active {
+                    background: white;
+                    color: var(--accent__blue);
+                    box-shadow: none;
+                }
+            }
+        }
     }
+}
+
+.submit__border.active  {
+    position: absolute;
+    background-color: rgb(15, 239, 255);
+    z-index: -2;
+
+    &.submit__border--top {
+        bottom: 8px;
+        left: 0;
+        width: 100%;
+        height: 42.5px;
+        border-radius: 10px;
+        animation: submitLoading 1.5s linear infinite ;
+    }
+    
+    &.submit__border--bottom {
+        top: 8px;
+        right: 0;
+        border-radius: 10px;
+        width: 100%;
+        height: 42.5px;
+        animation: submitLoading 1.5s linear infinite ;
+    }
+}
+
+@keyframes submitLoading {
+   0% {
+    width: 2px;
+    height: 0;
+   }
+   30% {
+    width: 2px;
+    height: 42.5px;
+    
+   }
+   100% {
+    width: 100%;
+   }
 }
 
 .newsletter__submitted {
