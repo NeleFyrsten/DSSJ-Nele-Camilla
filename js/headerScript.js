@@ -3,7 +3,7 @@ const navMenu = document.querySelector(".navbar__menu"); //ul with all menu link
 const backButton = document.querySelector(".backButton"); //svg arrow
 
 hamburger.addEventListener("click", openMenu);
-backButton.addEventListener("click", closeMenu);
+backButtonNewsletter.addEventListener("click", closeMenu);
 
 function openMenu() { //open and close menu in mobile
     hamburger.classList.toggle("active");
