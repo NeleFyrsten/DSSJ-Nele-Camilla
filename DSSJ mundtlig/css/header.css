@@ -1,0 +1,124 @@
+.header {
+    width: 100vw;
+    height: 80px;
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+	box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    container-type: inline-size;
+    container-name: header;
+    background-color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+.header__targetGroups {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: var(--mintgreen);
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    padding-inline-start: 20px;
+    padding-inline-end: 20px;
+    padding-block-end: 8px;
+    border-radius: 0 0 0 12px;
+}
+.header__targetGroup {
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+}
+.header__icons {
+    margin-inline-end: 12px;
+}
+.search {
+    cursor: pointer;
+}
+.wishlist {
+    cursor: pointer;
+}
+.navbar__logo {
+    width: 50px;
+    margin-inline-start: 8px;
+}
+.navbar {
+    flex-grow: 1;
+    max-width: 80%;
+}
+.navbar__menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.5s;
+}
+.navbar__menu.active {
+    left: 0;
+}
+.menuLink {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    font-size: 1rem;
+}
+.menuLink:hover {
+    color: var(--text__accent--primary);
+}
+.menuLink--active {
+    text-decoration: underline;
+    color: var(--text__accent--primary);
+    
+}
+.hamburger {
+    display: none;
+}
+.hamburger__bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #101010;
+}
+.backButton {
+    display: none;
+}
+
+/* container query for a smaller screen */
+@container header (max-width:970px) {
+    .navbar {
+        max-width: 100%;
+    }
+    .menuLink {
+        font-size: 0.75rem;
+    }
+}
+
+/* container query for mobile */
+@container header (max-width:745px) {
+    .header__targetGroups {
+        display: none;
+    }
+    .navbar__menu {
+        position: fixed;
+        flex-direction: column;
+        background-color: white;
+        width: 100vw;
+        height: 50vh;
+        z-index: 5;
+        left: 100%;
+        top: 0;
+        max-height: 350px;
+        padding-block-end: 20px;
+    }
+    .hamburger {
+        display: block;
+        margin-inline-end: 8px;
+    }
+    .backButton {
+        display: block;
+    }
+}
