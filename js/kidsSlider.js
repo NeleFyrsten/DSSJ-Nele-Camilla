@@ -18,15 +18,18 @@ function getJSON() {
 
 getJSON();
 
-const sliderContainer = document.querySelector(".kidsSlider");
+const sliderContainer = document.querySelector(".kidsSlider__cards");
+
 
 function addData(data){
     console.log(data);
+    cardsCount = data.length;
     data.forEach((item) => {
 
         //create the productcards that has to contain the info in the json file
         const productCard = document.createElement("section");
         productCard.classList.add("kidsSlider__card");
+        productCard.setAttribute("data-id", item.id);
         sliderContainer.appendChild(productCard);
 
         //create the img element
@@ -53,8 +56,76 @@ function addData(data){
         productDescription.classList.add("kidsSlider__location");
         productCard.appendChild(productDescription);
 
+        //Create the heart
+        const addAsWish = document.createElement('button');
+        addAsWish.classList.add('addAsWish');
+        const addAsWishIcon = document.createElement('img');
+        addAsWishIcon.src = '../images/icon__heart.svg';
+        addAsWishIcon.classList.add('addAsWishIcon');
+        addAsWish.appendChild(addAsWishIcon);
+        productCard.appendChild(addAsWish);
+
         if (item.id === "3"){
           productCard.classList.add("kidsSlider__card--focus");
         }
     });
+}
+
+const ageButtons = document.querySelectorAll('.ageButton');
+ageButtons.forEach ((ageButton) =>{
+  ageButton.addEventListener('click', () => {
+    
+    ageButton.classList.toggle('--active');
+  })
+})
+
+const next = document.querySelector('.slider__arrow--next');
+const prev = document.querySelector('.slider__arrow--previous');
+
+
+prev.addEventListener("click", moveSlider);
+next.addEventListener("click", moveSlider);
+
+let cardInFocus = 3;
+let cardsCount = sliderContainer.children.length;
+
+function moveSlider(e) {
+    if (e.currentTarget === prev) {
+        cardInFocus -= 1;
+        if (cardInFocus < 1) {
+            cardInFocus = cardsCount;
+        }
+    }
+
+    if (e.currentTarget === next) {
+        cardInFocus += 1;
+        if (cardInFocus > cardsCount) {
+            cardInFocus = 1;
+        }
+    }
+
+    const formerFocus = sliderContainer.querySelector(".kidsSlider__card--focus");
+    if (formerFocus) {
+        formerFocus.classList.remove("kidsSlider__card--focus");
+    }
+
+    const newFocus = sliderContainer.querySelector(`.kidsSlider__card[data-id="${cardInFocus}"]`);
+    if (newFocus) {
+        newFocus.classList.add("kidsSlider__card--focus");
+    }
+
+    adaptKidsSlider(e.currentTarget === prev);
+}
+
+function adaptKidsSlider(prev) {
+    const cards = Array.from(sliderContainer.children); // Convert NodeList to array
+    if (prev) {
+        const card = cards.pop(); // Method that removes the last element in an array (aka removes the last card)
+        sliderContainer.removeChild(card);
+        sliderContainer.insertBefore(card, cards[0]);
+    } else {
+        const card = cards.shift(); // Method that removes the first element in an array (aka removes the first card)
+        sliderContainer.removeChild(card);
+        sliderContainer.appendChild(card);
+    }
 }

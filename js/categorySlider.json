@@ -59,7 +59,8 @@
         "heroImage": "images/hero__aktivSammen.png",
         "heroImageCredit": "Kim Toft Jørgensen",
         "heroTitle": "AKTIV SAMMEN",
-        "heroDescription": "Spændvidden for hvad der kendetegner en aktiv ferie er individuel fra person til person og vi kan faktisk byde ind på det meste."
+        "heroDescription": "Spændvidden for hvad der kendetegner en aktiv ferie er individuel fra person til person og vi kan faktisk byde ind på det meste.",
+        "html": "html/aktivSammen.html"
     },
     {
         "id": "7",

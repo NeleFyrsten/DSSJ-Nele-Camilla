@@ -124,7 +124,7 @@ function moveSlider(e) {
     getPageData(currentPage);
 }
 /** ________________________________________
- *          CHANGE PAGE CONTENT
+ *          CHANGE HERO SECTION
     ________________________________________*/
 function getPageData(id) {
     fetch("js/categorySlider.json")
@@ -195,6 +195,7 @@ function adaptHeroSection(data) {
         slider.style.background =
             "linear-gradient(0deg, #0a423c 0%, #0a423c calc(100% - 50px), #ffffff00 calc(100% - 20px))";
         socialMedia.style.display = "flex";
+
     } else {
         heroImageMobile.src = `${data.heroImage}`;
         heroDescriptionMobile.textContent = `${data.heroDescription}`;
@@ -206,4 +207,31 @@ function adaptHeroSection(data) {
             "linear-gradient(0deg, #262525 0%, #262525 calc(100% - 50px), #ffffff00 calc(100% - 20px))";
         socialMedia.style.display = "none";
     }
+
+    if(data.id == 6) {
+        changeMainContent(data);
+    }
+}
+
+function changeMainContent(data) {
+    const htmlPath = data.html;
+    fetch(htmlPath)
+        .then((response) => {
+            // if (!response.ok) {
+            //     throw new Error(`HTTP Error! Status: ${response.status}`);
+            // }
+            return response.text();
+        })
+        .then((htmlString) => {
+            console.log(htmlString);
+            const main = document.querySelector('main');
+            //create html out of string
+            const newHTML = document.createRange().createContextualFragment(htmlString);
+            main.innerHTML = "";
+            main.appendChild(newHTML);
+
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
 }
